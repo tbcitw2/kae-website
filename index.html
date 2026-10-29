@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&family=Karla:wght@400;500;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="vendor/made-by/made-by.css">
 </head>
 <body>
 
@@ -103,9 +104,9 @@
 <main id="top">
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" data-label="Home">
     <div class="wrap hero-grid">
-      <div class="reveal">
+      <div>
         <span class="eyebrow">Independent hairstylist · Idaho</span>
         <h1>Effortless <em>blondes,</em> <span class="nb">lived-in</span> color<span class="pop">.</span></h1>
         <p class="lede">Luxury, low-maintenance hair made to fit your life — seamless blonding, dimensional color and hand-tied extensions.</p>
@@ -119,14 +120,17 @@
           <li><b>100%</b>Independent stylist</li>
         </ul>
       </div>
-      <div class="hero-photo reveal">
+      <div class="hero-photo">
         <div class="arch">
           <img src="img/sm/hero-kae.jpg" srcset="img/sm/hero-kae.jpg 665w, img/hero-kae.jpg 931w" sizes="(min-width: 900px) 460px, 92vw" width="665" height="1000" alt="Kae, smiling, with long blonde waves, wearing a black jacket and combat boots" fetchpriority="high">
         </div>
         <div class="badge" aria-hidden="true">
           <svg class="ring" viewBox="0 0 138 138">
             <defs><path id="hero-circ" d="M69 69 m-52 0 a52 52 0 1 1 104 0 a52 52 0 1 1 -104 0"/></defs>
-            <text font-family="Karla" font-weight="700" font-size="10" letter-spacing="2.1" fill="currentColor"><textPath href="#hero-circ">YOUR GO-TO HAIR GIRL ✦ YOUR GO-TO HAIR GIRL ✦</textPath></text>
+            <g font-family="Karla" font-weight="700" font-size="10" letter-spacing="1.9" fill="currentColor">
+              <text><textPath href="#hero-circ" startOffset="0">YOUR GO-TO HAIR GIRL ✦</textPath></text>
+              <text><textPath href="#hero-circ" startOffset="50%">YOUR GO-TO HAIR GIRL ✦</textPath></text>
+            </g>
           </svg>
           <span class="mid">Kae</span>
         </div>
@@ -143,7 +147,7 @@
   </div>
 
   <!-- ABOUT -->
-  <section class="about" id="about">
+  <section class="about" id="about" data-label="About">
     <div class="wrap about-grid">
       <div class="about-photos reveal">
         <img class="main" src="img/sm/kae-portrait.jpg" srcset="img/sm/kae-portrait.jpg 1000w, img/kae-portrait.jpg 1400w" sizes="(min-width: 900px) 420px, 80vw" width="1000" height="1000" alt="Kae in a black leather blazer and lace corset top, hair in motion" loading="lazy">
@@ -163,13 +167,13 @@
           <li>Leather & lace</li>
           <li>Perfectionist with foils</li>
         </ul>
-        <div class="signature" aria-label="xoxo, Kaelyn">xoxo, Kaelyn</div>
+        <div class="signature">xoxo, Kaelyn</div>
       </div>
     </div>
   </section>
 
   <!-- WORK -->
-  <section class="work" id="work">
+  <section class="work" id="work" data-label="The work">
     <div class="wrap">
       <div class="work-head reveal">
         <div>
@@ -193,7 +197,7 @@
   </section>
 
   <!-- SERVICES -->
-  <section class="menu" id="services">
+  <section class="menu" id="services" data-label="Services">
     <div class="wrap">
       <div class="menu-head reveal">
         <span class="eyebrow">Services + pricing</span>
@@ -202,7 +206,7 @@
       <div class="menu-grid">
         <details class="includes reveal" data-open-desktop>
           <summary>
-            <span><h3>Every color appointment includes</h3><small>6 little luxuries — tap to see</small></span>
+            <h3>Every color appointment includes<small>6 little luxuries — tap to see</small></h3>
             <span class="plus" aria-hidden="true">+</span>
           </summary>
           <div class="body">
@@ -249,7 +253,7 @@
   </section>
 
   <!-- EXTENSIONS -->
-  <section class="ext" id="extensions">
+  <section class="ext" id="extensions" data-label="Extensions">
     <div class="wrap ext-grid">
       <div class="ext-photo reveal">
         <img src="img/sm/ext-closeup.jpg" srcset="img/sm/ext-closeup.jpg 800w, img/ext-closeup.jpg 1120w" sizes="(min-width: 900px) 520px, 92vw" width="800" height="1000" alt="Close-up of a seamless hand-tied extension row blended into blonde hair" loading="lazy">
@@ -273,7 +277,7 @@
   </section>
 
   <!-- OFF DUTY / FASHION -->
-  <section class="closet" id="style">
+  <section class="closet" id="style" data-label="Style">
     <div class="wrap">
       <div class="closet-head reveal">
         <span class="eyebrow">Off duty</span>
@@ -301,7 +305,7 @@
   </section>
 
   <!-- FAVES / SHOP -->
-  <section class="faves" id="faves">
+  <section class="faves" id="faves" data-label="Kae’s faves">
     <div class="wrap">
       <div class="faves-head reveal">
         <span class="eyebrow">Kae’s faves</span>
@@ -347,7 +351,7 @@
   </section>
 
   <!-- FOLLOW -->
-  <section class="follow" id="follow">
+  <section class="follow" id="follow" data-label="Follow">
     <div class="wrap">
       <div class="reveal">
         <span class="eyebrow">Let’s connect</span>
@@ -375,9 +379,9 @@
   </section>
 
   <!-- GOOD TO KNOW -->
-  <section class="know">
+  <section class="know" data-label="Good to know">
     <div class="wrap">
-      <div class="reveal" style="margin-bottom:20px"><span class="eyebrow">Good to know</span></div>
+      <div class="reveal know-head"><span class="eyebrow">Good to know</span></div>
       <div class="know-grid">
         <div class="know-card hl reveal">
           <h3>Referral perk ✦</h3>
@@ -396,7 +400,7 @@
   </section>
 
   <!-- BOOK: on-site client forms (questions copied from her Jotform forms) -->
-  <section class="book" id="book">
+  <section class="book" id="book" data-label="Book">
     <div class="wrap">
       <div class="book-head reveal">
         <span class="eyebrow">New clients</span>
@@ -462,14 +466,14 @@
           </fieldset>
 
           <div class="field upload" data-required>
-            <span class="label">1–2 photos of your hair in natural light <i>*</i></span>
+            <span class="label" id="upl-1">1–2 photos of your hair in natural light <i>*</i></span>
             <small class="hint">Preferably taken within the last month!</small>
-            <label class="drop"><input type="file" name="photos_current" accept="image/*" multiple data-max="2"><span>＋ Add photos</span></label>
+            <label class="drop"><input type="file" aria-labelledby="upl-1" name="photos_current" accept="image/*" multiple data-max="2"><span>＋ Add photos</span></label>
             <div class="thumbs"></div>
           </div>
           <div class="field upload" data-required>
-            <span class="label">Photos of your hair goals <i>*</i></span>
-            <label class="drop"><input type="file" name="photos_goal" accept="image/*" multiple data-max="4"><span>＋ Add photos</span></label>
+            <span class="label" id="upl-2">Photos of your hair goals <i>*</i></span>
+            <label class="drop"><input type="file" aria-labelledby="upl-2" name="photos_goal" accept="image/*" multiple data-max="4"><span>＋ Add photos</span></label>
             <div class="thumbs"></div>
           </div>
 
@@ -533,13 +537,13 @@
           </fieldset>
 
           <div class="field upload" data-required>
-            <span class="label">1–2 photos of your current hair <i>*</i></span>
-            <label class="drop"><input type="file" name="photos_current" accept="image/*" multiple data-max="2"><span>＋ Add photos</span></label>
+            <span class="label" id="upl-3">1–2 photos of your current hair <i>*</i></span>
+            <label class="drop"><input type="file" aria-labelledby="upl-3" name="photos_current" accept="image/*" multiple data-max="2"><span>＋ Add photos</span></label>
             <div class="thumbs"></div>
           </div>
           <div class="field upload" data-required>
-            <span class="label">Photos of your hair goals <i>*</i></span>
-            <label class="drop"><input type="file" name="photos_goal" accept="image/*" multiple data-max="4"><span>＋ Add photos</span></label>
+            <span class="label" id="upl-4">Photos of your hair goals <i>*</i></span>
+            <label class="drop"><input type="file" aria-labelledby="upl-4" name="photos_goal" accept="image/*" multiple data-max="4"><span>＋ Add photos</span></label>
             <div class="thumbs"></div>
           </div>
 
@@ -593,10 +597,24 @@
       <span>© 2026 Beauty by Kae · Kaelyn Moritsch</span>
       <span>Some links are affiliate links — thank you for supporting my small business 💗</span>
     </div>
+    <div class="foot-credit">
+      <a class="made-by made-by--dark" href="https://www.autoaimate.com" target="_blank" rel="noopener">
+        <span>Made by</span>
+        <img src="vendor/made-by/autoaimate-logo.svg" alt="" width="22" height="22">
+        <b>autoAImate<i>.</i></b>
+        <em>Business Solutions</em>
+      </a>
+    </div>
   </div>
 </footer>
 
 <!-- Phones: always-reachable booking -->
+<nav class="screen-dots" aria-label="Sections" hidden></nav>
+<div class="swipe-hint" aria-hidden="true" hidden>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span>Swipe up</span>
+</div>
+
 <div class="book-bar" aria-hidden="true">
   <a class="btn dark" href="#book" tabindex="-1">Book with Kae <span class="arrow">→</span></a>
   <a class="ig" href="https://instagram.com/kaetheblondie" target="_blank" rel="noopener" aria-label="Instagram" tabindex="-1"><svg><use href="#i-instagram"/></svg></a>

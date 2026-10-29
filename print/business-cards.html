@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Beauty by Kae — Business Card Concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&family=Karla:wght@400;500;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<style>
+/* Business card concepts — US standard 3.5 × 2 in. Cards are drawn at real size, then zoomed for the presentation. */
+@page { size: 11in 8.5in; margin: 0; }
+:root {
+  --cream: #F5F1EB; --latte: #E9DED7; --sand: #D9C8B8; --honey: #E3C48E;
+  --mocha: #6B5540; --ink: #1E1A17; --ink-soft: #3F352E; --pink: #FF3EA5; --white: #FFFDFB;
+  --serif: "Bodoni Moda", Georgia, serif;
+  --sans: "Karla", system-ui, sans-serif;
+  --script: "Mrs Saint Delafield", cursive;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #EDE7DF; }
+body { font-family: var(--sans); color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.serif { font-family: var(--serif); font-optical-sizing: none; font-variation-settings: "opsz" 28; }
+
+/* ---------- Presentation sheets ---------- */
+.sheet {
+  width: 11in; height: 8.5in; position: relative; overflow: hidden;
+  padding: .55in .6in; background: var(--cream);
+  display: flex; flex-direction: column; break-after: page;
+}
+.sheet:last-child { break-after: auto; }
+.sheet-head { display: flex; align-items: baseline; gap: .22in; border-bottom: 1.5px solid var(--ink); padding-bottom: .14in; }
+.sheet-head .num { font: 700 30pt/1 var(--serif); font-variation-settings: "opsz" 28; color: var(--pink); }
+.sheet-head h2 { font: 700 24pt/1.1 var(--serif); font-variation-settings: "opsz" 28; }
+.sheet-head h2 em { font-weight: 500; }
+.sheet-head .tag { margin-left: auto; font: 700 8pt var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--mocha); }
+.sheet-desc { margin-top: .14in; max-width: 7.6in; font: 400 10.5pt/1.5 var(--sans); color: var(--ink-soft); }
+.stage { flex: 1; display: flex; align-items: center; justify-content: center; gap: .55in; }
+.side { display: flex; flex-direction: column; align-items: center; gap: .16in; }
+.side .lbl { font: 700 7.5pt var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--mocha); }
+.zoom { zoom: 1.35; }
+.zoom.v { zoom: 1.15; }
+.card-shadow { box-shadow: 0 .02in .05in rgba(30,26,23,.12), 0 .12in .3in rgba(30,26,23,.14); border-radius: .06in; }
+.sheet-foot { display: flex; justify-content: space-between; font: 500 7.5pt var(--sans); color: var(--mocha); letter-spacing: .04em; }
+
+/* ---------- Card base ---------- */
+.card { width: 3.5in; height: 2in; position: relative; overflow: hidden; border-radius: .06in; }
+.card.vert { width: 2in; height: 3.5in; }
+.mark { display: block; color: var(--ink); --spark: var(--pink); }
+.qr { display: block; color: var(--ink); }
+.ico { width: 7.5pt; height: 7.5pt; flex: none; }
+.lines { display: grid; gap: 3pt; font: 500 6.8pt/1.2 var(--sans); }
+.lines div { display: flex; align-items: center; gap: 4pt; }
+.eyebrow { font: 700 5.6pt var(--sans); letter-spacing: .26em; text-transform: uppercase; }
+
+/* 01 — Signature Cream */
+.c1 { background: var(--cream); }
+.c1.front { display: flex; align-items: center; justify-content: center; gap: .2in; }
+.c1.front .mark { width: .78in; height: 1.01in; }
+.c1.front .rule { width: 1px; height: .9in; background: var(--ink); opacity: .35; }
+.c1.front .name { font: 700 34pt/0.9 var(--serif); font-variation-settings: "opsz" 28; margin-top: 3pt; }
+.c1.front .sub { margin-top: 6pt; font: 500 6.6pt var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--mocha); }
+.c1.back { padding: .2in .22in; display: flex; justify-content: space-between; align-items: center; }
+.c1.back::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: .07in; background: var(--pink); }
+.c1.back .who { font: 700 14pt/1.05 var(--serif); font-variation-settings: "opsz" 28; }
+.c1.back .role { margin: 3pt 0 9pt; font: 500 6.4pt/1.35 var(--sans); color: var(--mocha); }
+.c1.back .qr-box { text-align: center; }
+.c1.back .qr { width: .8in; height: .8in; }
+.c1.back .qr-box span { display: block; margin-top: 4pt; font: 700 5.6pt var(--sans); letter-spacing: .2em; text-transform: uppercase; }
+
+/* 02 — Midnight */
+.c2 { background: var(--ink); color: var(--cream); }
+.c2 .mark { color: var(--cream); }
+.c2.front { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7pt; }
+.c2.front .mark { width: .82in; height: 1.07in; }
+.c2.front .eyebrow { color: var(--cream); font-size: 6pt; letter-spacing: .42em; padding-left: .42em; }
+.c2.back { padding: .2in .22in; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .16in; }
+.c2.back .line { font: italic 500 13pt/1.1 var(--serif); font-variation-settings: "opsz" 28; }
+.c2.back .line b { font-style: normal; font-weight: 700; color: var(--pink); }
+.c2.back .who { margin: 7pt 0 8pt; font: 700 6.4pt var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--honey); }
+.c2.back .lines { color: var(--cream); }
+.c2.back .tile { background: var(--cream); padding: 5pt; border-radius: 5pt; box-shadow: 2.5pt 2.5pt 0 var(--pink); }
+.c2.back .qr { width: .74in; height: .74in; }
+.c2.back .scan { margin-top: 6pt; text-align: center; font: 700 5.4pt var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--cream); }
+
+/* 03 — Arch Portrait */
+.c3.front { background: var(--latte); }
+.c3.front .copy { position: absolute; left: .2in; top: .2in; width: 1.75in; }
+.c3.front .eyebrow { color: var(--mocha); }
+.c3.front h3 { margin-top: 5pt; font: 700 15pt/1.02 var(--serif); font-variation-settings: "opsz" 28; }
+.c3.front h3 em { font-weight: 500; }
+.c3.front h3 i { font-style: normal; color: var(--pink); }
+.c3.front .lockup { position: absolute; left: .2in; bottom: .18in; display: flex; align-items: center; gap: 5pt; }
+.c3.front .lockup .mark { width: .3in; height: .39in; }
+.c3.front .lockup span { font: 700 11pt/1 var(--serif); font-variation-settings: "opsz" 28; }
+.c3.front .arch {
+  position: absolute; right: .2in; bottom: 0; width: 1.22in; height: 1.78in;
+  border: 1.5pt solid var(--ink); border-bottom: 0; border-radius: .5in .5in 0 0; overflow: hidden;
+  background: url(../img/kae-portrait.jpg) 52% 18% / 165% auto no-repeat;
+}
+.c3.front .spark { position: absolute; right: .1in; top: .1in; width: .2in; height: .2in; color: var(--pink); }
+.c3.back { background: var(--honey); padding: .2in .22in; display: flex; justify-content: space-between; align-items: center; }
+.c3.back .sig { font: 30pt/1 var(--script); color: var(--ink); margin: -4pt 0 0 -2pt; }
+.c3.back .who { margin-top: 1pt; font: 700 6.4pt var(--sans); letter-spacing: .16em; text-transform: uppercase; }
+.c3.back .role { margin: 2pt 0 8pt; font: 500 6.4pt var(--sans); color: var(--ink-soft); }
+.c3.back .tile { background: var(--cream); padding: 6pt 6pt 5pt; border: 1.2pt solid var(--ink); border-radius: .3in .3in 4pt 4pt; text-align: center; }
+.c3.back .qr { width: .72in; height: .72in; margin-top: 4pt; }
+.c3.back .tile span { display: block; margin-top: 4pt; font: 700 5.4pt var(--sans); letter-spacing: .18em; text-transform: uppercase; }
+
+/* 04 — Hot Pink Pop */
+.c4.front { background: var(--pink); }
+.c4.front .badge { position: absolute; left: 50%; top: 50%; width: 1.56in; height: 1.56in; transform: translate(-50%, -50%); }
+.c4.front .badge .disc { position: absolute; inset: 0; border-radius: 50%; background: var(--cream); border: 1.5pt solid var(--ink); box-shadow: 3pt 3pt 0 var(--ink); }
+.c4.front .badge svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.c4.front .badge .mid { position: absolute; inset: 0; display: grid; place-items: center; font: 700 28pt/1 var(--serif); font-variation-settings: "opsz" 28; }
+.c4.front .s { position: absolute; color: var(--ink); }
+.c4.back { background: var(--cream); }
+.c4.back .body { position: absolute; inset: .17in .2in .36in; display: flex; justify-content: space-between; align-items: center; }
+.c4.back .chip {
+  display: inline-flex; align-items: center; gap: 3pt; padding: 3.5pt 8pt; border-radius: 99px;
+  background: var(--ink); color: var(--cream); box-shadow: 2pt 2pt 0 var(--pink);
+  font: 700 6.6pt var(--sans); letter-spacing: .02em;
+}
+.c4.back .who { margin: 7pt 0 6pt; font: 700 13pt/1 var(--serif); font-variation-settings: "opsz" 28; }
+.c4.back .qr-wrap { padding: 5pt; background: var(--white); border: 1.2pt solid var(--ink); border-radius: 5pt; box-shadow: 2.5pt 2.5pt 0 var(--ink); }
+.c4.back .qr { width: .74in; height: .74in; }
+.c4.back .strip {
+  position: absolute; left: 0; right: 0; bottom: 0; height: .26in; background: var(--ink); color: var(--cream);
+  display: flex; align-items: center; justify-content: center; gap: 6pt; white-space: nowrap;
+  font: italic 500 7.4pt/1 var(--serif); font-variation-settings: "opsz" 28;
+}
+.c4.back .strip i { font-style: normal; color: var(--pink); font-size: 6pt; }
+
+/* 05 — Editorial (vertical) */
+.c5.front { background: #c9c9c7 url(../img/kae-bw.jpg) 50% 0 / 150% auto no-repeat; color: var(--ink); }
+.c5.front::after { content: ""; position: absolute; inset: auto 0 0 0; height: 1.1in; background: linear-gradient(to top, rgba(30,26,23,.78), rgba(30,26,23,0)); }
+.c5.front .top { position: absolute; top: .2in; left: 0; right: 0; text-align: center; }
+.c5.front .top .mark { width: .44in; height: .57in; margin: 0 auto; }
+.c5.front .bottom { position: absolute; z-index: 1; left: 0; right: 0; bottom: .2in; text-align: center; color: var(--cream); }
+.c5.front .bottom .eyebrow { font-size: 5.4pt; letter-spacing: .34em; padding-left: .34em; }
+.c5.front .bottom .name { font: 700 30pt/1 var(--serif); font-variation-settings: "opsz" 28; margin-top: 2pt; }
+.c5.front .bottom .name i { font-style: normal; color: var(--pink); }
+.c5.back { background: var(--cream); padding: .22in .2in .2in; display: flex; flex-direction: column; }
+.c5.back .head { display: flex; align-items: center; gap: 5pt; }
+.c5.back .head .mark { width: .26in; height: .34in; }
+.c5.back .head span { font: 700 10pt/1 var(--serif); font-variation-settings: "opsz" 28; }
+.c5.back h4 { margin-top: .2in; font: 700 13pt/1.05 var(--serif); font-variation-settings: "opsz" 28; }
+.c5.back h4 em { font-weight: 500; }
+.c5.back .fill { margin-top: 12pt; display: grid; gap: 15pt; }
+.c5.back .fill div { display: flex; align-items: flex-end; gap: 4pt; font: 700 5.6pt var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--mocha); }
+.c5.back .fill div::after { content: ""; flex: 1; border-bottom: .8pt solid var(--ink); transform: translateY(-1pt); }
+.c5.back .foot { margin-top: auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 6pt; padding-top: 8pt; border-top: .8pt solid var(--sand); }
+.c5.back .foot .lines { font-size: 6pt; gap: 2.5pt; }
+.c5.back .qr { width: .5in; height: .5in; }
+.c5.back .foot .scan { margin-top: 3pt; text-align: center; font: 700 4.8pt var(--sans); letter-spacing: .16em; text-transform: uppercase; }
+
+/* ---------- Cover & notes ---------- */
+.cover { justify-content: center; align-items: center; text-align: center; background: var(--ink); color: var(--cream); }
+.cover .mark { width: 1.4in; height: 1.82in; color: var(--cream); margin: 0 auto .3in; }
+.cover .eyebrow { color: var(--honey); font-size: 9pt; }
+.cover h1 { margin-top: .12in; font: 700 46pt/1 var(--serif); font-variation-settings: "opsz" 28; }
+.cover h1 em { font-weight: 500; }
+.cover p { margin-top: .2in; font: 400 11pt/1.5 var(--sans); color: var(--sand); }
+.cover .row { display: flex; gap: .16in; justify-content: center; margin-top: .45in; }
+.cover .row span { padding: 5pt 12pt; border: 1px solid rgba(245,241,235,.35); border-radius: 99px; font: 500 9pt var(--sans); }
+.notes { padding: .6in .7in; }
+.notes h2 { font: 700 24pt/1.1 var(--serif); font-variation-settings: "opsz" 28; border-bottom: 1.5px solid var(--ink); padding-bottom: .14in; }
+.notes ul { margin-top: .25in; list-style: none; display: grid; gap: .16in; max-width: 8.4in; }
+.notes li { font: 400 11pt/1.5 var(--sans); padding-left: .3in; position: relative; }
+.notes li::before { content: "✦"; position: absolute; left: 0; color: var(--pink); }
+.notes li b { font-weight: 700; }
+.overview { margin-top: auto; display: flex; gap: .22in; justify-content: center; align-items: flex-end; }
+.overview .zoom { zoom: .62; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="kae-mark" viewBox="0 0 200 260">
+    <g fill="none">
+      <path d="M28 248V100a44 44 0 0 1 44-44h56a44 44 0 0 1 44 44v148" stroke="currentColor" stroke-width="5.5"/>
+      <path d="M40 248V100a32 32 0 0 1 32-32h56a32 32 0 0 1 32 32v148" stroke="currentColor" stroke-width="1.8"/>
+      <line x1="16" y1="248" x2="184" y2="248" stroke="currentColor" stroke-width="5.5"/>
+      <g transform="translate(-9 0)">
+        <rect x="65" y="92" width="24" height="124" fill="currentColor"/>
+        <rect x="53" y="88" width="48" height="7" fill="currentColor"/>
+        <rect x="53" y="213" width="48" height="7" fill="currentColor"/>
+        <path d="M86 162 L135 96" stroke="currentColor" stroke-width="8"/>
+        <rect x="118" y="88" width="36" height="7" fill="currentColor"/>
+        <path d="M88 134 C116 147 108 171 125 181 C142 191 133 205 153 213 C159 215 164 213 168 206 C167 223 155 230 142 228 C113 223 121 205 107 195 C93 185 103 169 88 166 Z" fill="currentColor"/>
+        <path d="M97 141 C121 153 116 174 132 182 C147 190 142 202 161 206 C167 207 171 204 174 198" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M89 172 C99 181 97 194 104 204 C111 214 119 225 135 232" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </g>
+      <path d="M160 26 C161.8 36 164.6 38.6 174 40.4 C164.6 42.2 161.8 45 160 55 C158.2 45 155.4 42.2 146 40.4 C155.4 38.6 158.2 36 160 26Z" style="fill: var(--spark, #FF3EA5)"/>
+      <circle cx="178" cy="56" r="3.2" style="fill: var(--spark, #FF3EA5)"/>
+    </g>
+  </symbol>
+  <symbol id="spark" viewBox="0 0 28 29"><path d="M14 0C15.8 10 18.6 12.6 28 14.4 18.6 16.2 15.8 19 14 29 12.2 19 9.4 16.2 0 14.4 9.4 12.6 12.2 10 14 0Z" fill="currentColor"/></symbol>
+  <!-- Placeholder QR (encodes https://example.com/book-with-kae) — swap for the real booking link before printing -->
+  <symbol id="qr" viewBox="0 0 29 29"><path stroke="currentColor" d="M0 0.5h7m2 0h3m2 0h1m2 0h3m2 0h7M0 1.5h1m5 0h1m2 0h1m1 0h2m3 0h1m1 0h1m1 0h1m1 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h2m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m3 0h2m1 0h1m2 0h1m1 0h1m3 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m3 0h1m1 0h1m4 0h2m3 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m1 0h1m1 0h2m3 0h3m1 0h2m1 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M9 7.5h3m1 0h1m1 0h5M0 8.5h1m2 0h1m1 0h2m1 0h3m3 0h1m1 0h1m1 0h1m2 0h1m1 0h1M1 9.5h3m1 0h1m1 0h2m2 0h1m1 0h1m1 0h2m3 0h1m1 0h1m2 0h1m2 0h1M4 10.5h4m2 0h2m1 0h3m3 0h1m3 0h5M0 11.5h1m1 0h3m2 0h2m1 0h1m1 0h2m2 0h1m1 0h1m2 0h1m1 0h2m1 0h2M0 12.5h2m4 0h1m4 0h2m1 0h4m1 0h4m2 0h1m1 0h2M0 13.5h1m1 0h2m1 0h1m4 0h1m2 0h7m1 0h1M2 14.5h1m1 0h1m1 0h3m1 0h2m1 0h2m5 0h2m2 0h5M0 15.5h2m1 0h2m2 0h1m1 0h4m2 0h7m1 0h1m1 0h1m1 0h1M0 16.5h1m1 0h5m2 0h2m2 0h1m3 0h1m2 0h2m5 0h1M1 17.5h2m1 0h2m1 0h1m5 0h2m1 0h2m3 0h3m1 0h1m2 0h1M0 18.5h1m1 0h3m1 0h2m1 0h1m2 0h1m1 0h1m3 0h1m2 0h2m1 0h1m2 0h2M2 19.5h1m2 0h1m3 0h1m1 0h1m2 0h7m1 0h3m2 0h2M0 20.5h1m2 0h5m1 0h2m1 0h1m3 0h1m2 0h6m1 0h1M8 21.5h3m1 0h1m1 0h1m1 0h5m3 0h1m1 0h3M0 22.5h7m3 0h1m1 0h1m3 0h1m3 0h1m1 0h1m1 0h1m2 0h1M0 23.5h1m5 0h1m1 0h1m1 0h2m2 0h1m5 0h1m3 0h3M0 24.5h1m1 0h3m1 0h1m2 0h4m2 0h3m2 0h5m3 0h1M0 25.5h1m1 0h3m1 0h1m1 0h4m7 0h4m1 0h4M0 26.5h1m1 0h3m1 0h1m2 0h1m2 0h2m3 0h2m5 0h3m1 0h1M0 27.5h1m5 0h1m2 0h2m1 0h6m1 0h2m1 0h1m4 0h1M0 28.5h7m1 0h1m1 0h1m1 0h2m1 0h1m1 0h2m1 0h1m1 0h4m1 0h1"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 21s-6.5-6.2-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.8" r="2.3"/></symbol>
+</svg>
+
+<!-- Cover -->
+<section class="sheet cover">
+  <svg class="mark"><use href="#kae-mark"/></svg>
+  <span class="eyebrow">Beauty by Kae · Brand print</span>
+  <h1>Business card <em>concepts</em></h1>
+  <p>Five front &amp; back designs built from the website — same palette, type and logo.<br>US standard size, 3.5 × 2 in. QR codes are placeholders for now.</p>
+  <div class="row"><span>01 Signature Cream</span><span>02 Midnight</span><span>03 Arch Portrait</span><span>04 Hot Pink Pop</span><span>05 Editorial</span></div>
+</section>
+
+<!-- 01 -->
+<section class="sheet">
+  <header class="sheet-head"><span class="num">01</span><h2>Signature <em>Cream</em></h2><span class="tag">Clean · timeless</span></header>
+  <p class="sheet-desc">The website’s home look: warm cream stock, the K-arch mark next to the bold Bodoni name, and a single stripe of her signature hot pink on the back. The safest choice — works for every client.</p>
+  <div class="stage">
+    <div class="side"><div class="zoom"><div class="card c1 front card-shadow">
+      <svg class="mark"><use href="#kae-mark"/></svg>
+      <span class="rule"></span>
+      <div><span class="eyebrow">Beauty by</span><div class="name">Kae</div><div class="sub">Hairstylist · Idaho</div></div>
+    </div></div><span class="lbl">Front</span></div>
+    <div class="side"><div class="zoom"><div class="card c1 back card-shadow">
+      <div>
+        <div class="who">Kaelyn Moritsch</div>
+        <div class="role">Blonding · Lived-in color · Hand-tied extensions</div>
+        <div class="lines">
+          <div><svg class="ico"><use href="#i-ig"/></svg>@kaetheblondie</div>
+          <div><svg class="ico"><use href="#i-mail"/></svg>kaetheblondie@gmail.com</div>
+          <div><svg class="ico"><use href="#i-pin"/></svg>Idaho · By appointment</div>
+        </div>
+      </div>
+      <div class="qr-box"><svg class="qr"><use href="#qr"/></svg><span>Book with Kae</span></div>
+    </div></div><span class="lbl">Back</span></div>
+  </div>
+  <footer class="sheet-foot"><span>Paper: uncoated cream, 16–18 pt · Pink stripe can be a foil or spot color</span><span>Beauty by Kae</span></footer>
+</section>
+
+<!-- 02 -->
+<section class="sheet">
+  <header class="sheet-head"><span class="num">02</span><h2>Midnight</h2><span class="tag">Luxe · high contrast</span></header>
+  <p class="sheet-desc">All-black card with the mark in cream — the dark sections of the website on paper. The back uses the site’s hard pink shadow behind the QR, so it still feels playful.</p>
+  <div class="stage">
+    <div class="side"><div class="zoom"><div class="card c2 front card-shadow">
+      <svg class="mark"><use href="#kae-mark"/></svg>
+      <span class="eyebrow">Beauty by Kae</span>
+    </div></div><span class="lbl">Front</span></div>
+    <div class="side"><div class="zoom"><div class="card c2 back card-shadow">
+      <div>
+        <div class="line">Your go-to<br>hair girl<b>.</b></div>
+        <div class="who">Kaelyn Moritsch · Hairstylist</div>
+        <div class="lines">
+          <div><svg class="ico"><use href="#i-ig"/></svg>@kaetheblondie</div>
+          <div><svg class="ico"><use href="#i-mail"/></svg>kaetheblondie@gmail.com</div>
+          <div><svg class="ico"><use href="#i-pin"/></svg>Idaho · By appointment</div>
+        </div>
+      </div>
+      <div><div class="tile"><svg class="qr"><use href="#qr"/></svg></div><div class="scan">Scan to book</div></div>
+    </div></div><span class="lbl">Back</span></div>
+  </div>
+  <footer class="sheet-foot"><span>Paper: black, 32 pt · Cream ink or white foil on the front mark</span><span>Beauty by Kae</span></footer>
+</section>
+
+<!-- 03 -->
+<section class="sheet">
+  <header class="sheet-head"><span class="num">03</span><h2>Arch <em>Portrait</em></h2><span class="tag">Personal · warm</span></header>
+  <p class="sheet-desc">Her photo inside the same squared arch as the logo and the website’s hero, with the main tagline. The honey back carries her signature in script — the most personal of the five.</p>
+  <div class="stage">
+    <div class="side"><div class="zoom"><div class="card c3 front card-shadow">
+      <div class="copy">
+        <span class="eyebrow">Independent hairstylist</span>
+        <h3>Effortless <em>blondes,</em> lived-in color<i>.</i></h3>
+      </div>
+      <div class="lockup"><svg class="mark"><use href="#kae-mark"/></svg><span>Beauty by Kae</span></div>
+      <div class="arch"></div>
+      <svg class="spark"><use href="#spark"/></svg>
+    </div></div><span class="lbl">Front</span></div>
+    <div class="side"><div class="zoom"><div class="card c3 back card-shadow">
+      <div>
+        <div class="sig">Kae</div>
+        <div class="who">Kaelyn Moritsch</div>
+        <div class="role">Blonding · Lived-in color · Extensions</div>
+        <div class="lines">
+          <div><svg class="ico"><use href="#i-ig"/></svg>@kaetheblondie</div>
+          <div><svg class="ico"><use href="#i-mail"/></svg>kaetheblondie@gmail.com</div>
+          <div><svg class="ico"><use href="#i-pin"/></svg>Idaho · By appointment</div>
+        </div>
+      </div>
+      <div class="tile"><svg class="qr"><use href="#qr"/></svg><span>Book with Kae</span></div>
+    </div></div><span class="lbl">Back</span></div>
+  </div>
+  <footer class="sheet-foot"><span>Paper: smooth matte, 16 pt · Needs a high-res photo file for print</span><span>Beauty by Kae</span></footer>
+</section>
+
+<!-- 04 -->
+<section class="sheet">
+  <header class="sheet-head"><span class="num">04</span><h2>Hot Pink <em>Pop</em></h2><span class="tag">Bold · fun</span></header>
+  <p class="sheet-desc">The website’s spinning “Your go-to hair girl” badge as a sticker on full hot pink — impossible to lose in a bag. The back brings the “Book with Kae” button and the scrolling ribbon from the site.</p>
+  <div class="stage">
+    <div class="side"><div class="zoom"><div class="card c4 front card-shadow">
+      <svg class="s" style="left:.24in;top:.22in;width:.17in;height:.18in"><use href="#spark"/></svg>
+      <svg class="s" style="left:.42in;top:.48in;width:.08in;height:.08in"><use href="#spark"/></svg>
+      <svg class="s" style="right:.26in;bottom:.24in;width:.2in;height:.21in"><use href="#spark"/></svg>
+      <svg class="s" style="right:.5in;bottom:.5in;width:.08in;height:.08in"><use href="#spark"/></svg>
+      <div class="badge">
+        <div class="disc"></div>
+        <svg viewBox="0 0 100 100">
+          <defs><path id="c4-circ" d="M50 50 m-38 0 a38 38 0 1 1 76 0 a38 38 0 1 1 -76 0"/></defs>
+          <g font-family="Karla" font-weight="700" font-size="7.2" letter-spacing="1.25" fill="#1E1A17">
+            <text><textPath href="#c4-circ" startOffset="0">YOUR GO-TO HAIR GIRL ✦</textPath></text>
+            <text><textPath href="#c4-circ" startOffset="50%">YOUR GO-TO HAIR GIRL ✦</textPath></text>
+          </g>
+        </svg>
+        <div class="mid">Kae</div>
+      </div>
+    </div></div><span class="lbl">Front</span></div>
+    <div class="side"><div class="zoom"><div class="card c4 back card-shadow">
+      <div class="body">
+        <div>
+          <span class="chip">Book with Kae →</span>
+          <div class="who">Beauty by Kae</div>
+          <div class="lines">
+            <div><svg class="ico"><use href="#i-ig"/></svg>@kaetheblondie</div>
+            <div><svg class="ico"><use href="#i-mail"/></svg>kaetheblondie@gmail.com</div>
+            <div><svg class="ico"><use href="#i-pin"/></svg>Idaho · By appointment</div>
+          </div>
+        </div>
+        <div class="qr-wrap"><svg class="qr"><use href="#qr"/></svg></div>
+      </div>
+      <div class="strip">Seamless blondes <i>✦</i> Lived-in color <i>✦</i> Hand-tied extensions</div>
+    </div></div><span class="lbl">Back</span></div>
+  </div>
+  <footer class="sheet-foot"><span>Paper: matte, 16 pt · Hot pink should be checked against a printed proof (#FF3EA5 is brighter on screen)</span><span>Beauty by Kae</span></footer>
+</section>
+
+<!-- 05 -->
+<section class="sheet">
+  <header class="sheet-head"><span class="num">05</span><h2>Editorial <em>(vertical)</em></h2><span class="tag">Fashion · practical</span></header>
+  <p class="sheet-desc">A tall, magazine-style front with her black &amp; white photo. The back doubles as an appointment card: write the next visit date and time in the chair, so clients leave already booked.</p>
+  <div class="stage">
+    <div class="side"><div class="zoom v"><div class="card vert c5 front card-shadow">
+      <div class="top"><svg class="mark"><use href="#kae-mark"/></svg></div>
+      <div class="bottom"><span class="eyebrow">Beauty by</span><div class="name">Kae<i>.</i></div></div>
+    </div></div><span class="lbl">Front</span></div>
+    <div class="side"><div class="zoom v"><div class="card vert c5 back card-shadow">
+      <div class="head"><svg class="mark"><use href="#kae-mark"/></svg><span>Beauty by Kae</span></div>
+      <h4>Your next <em>appointment</em></h4>
+      <div class="fill"><div>Date</div><div>Time</div><div>Service</div><div>Notes</div></div>
+      <div class="foot">
+        <div class="lines">
+          <div><svg class="ico"><use href="#i-ig"/></svg>@kaetheblondie</div>
+          <div><svg class="ico"><use href="#i-mail"/></svg>kaetheblondie@gmail.com</div>
+        </div>
+        <div><svg class="qr"><use href="#qr"/></svg><div class="scan">Book</div></div>
+      </div>
+    </div></div><span class="lbl">Back</span></div>
+  </div>
+  <footer class="sheet-foot"><span>Paper: uncoated (so a pen writes on it), 16 pt</span><span>Beauty by Kae</span></footer>
+</section>
+
+<!-- Notes -->
+<section class="sheet notes">
+  <h2>Before printing</h2>
+  <ul>
+    <li><b>QR codes are placeholders.</b> They point to a dummy address. Once the website is live, swap in the real booking link (or her Instagram) and test-scan every card.</li>
+    <li><b>Check the details with Kae:</b> name as she wants it printed, whether to add a phone number, and the salon address (right now it says “Idaho · By appointment”, like the website).</li>
+    <li><b>Print files:</b> for the print shop, export at 3.5 × 2 in with 0.125 in bleed and text kept 0.125 in inside the edge.</li>
+    <li><b>Mix &amp; match:</b> any front can pair with any back — e.g. 02 Midnight front with the 05 appointment back.</li>
+  </ul>
+  <div class="overview">
+    <div class="zoom"><div class="card c1 front card-shadow"><svg class="mark"><use href="#kae-mark"/></svg><span class="rule"></span><div><span class="eyebrow">Beauty by</span><div class="name">Kae</div><div class="sub">Hairstylist · Idaho</div></div></div></div>
+    <div class="zoom"><div class="card c2 front card-shadow"><svg class="mark"><use href="#kae-mark"/></svg><span class="eyebrow">Beauty by Kae</span></div></div>
+    <div class="zoom"><div class="card c4 front card-shadow"><div class="badge"><div class="disc"></div><svg viewBox="0 0 100 100"><g font-family="Karla" font-weight="700" font-size="7.2" letter-spacing="1.25" fill="#1E1A17"><text><textPath href="#c4-circ" startOffset="0">YOUR GO-TO HAIR GIRL ✦</textPath></text><text><textPath href="#c4-circ" startOffset="50%">YOUR GO-TO HAIR GIRL ✦</textPath></text></g></svg><div class="mid">Kae</div></div></div></div>
+  </div>
+</section>
+
+</body>
+</html>

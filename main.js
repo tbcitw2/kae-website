@@ -1,14 +1,21 @@
 const desktop = window.matchMedia('(min-width: 900px)');
+const calm = window.matchMedia('(prefers-reduced-motion: reduce)');
+const glide = () => (calm.matches ? 'auto' : 'smooth');
 
 // Mobile full-screen menu
 const toggle = document.querySelector('.menu-toggle');
 const menu = document.getElementById('mobile-menu');
 function setMenu(open) {
+  const was = menu.classList.contains('open');
   menu.classList.toggle('open', open);
   menu.setAttribute('aria-hidden', !open);
   toggle.setAttribute('aria-expanded', open);
   toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   document.body.classList.toggle('menu-open', open);
+  // keep keyboard focus inside the menu while it covers the page
+  document.querySelectorAll('main, .site-footer, .book-bar, .promo, .screen-dots').forEach((el) => (el.inert = open));
+  if (open && !was) menu.querySelector('a, button')?.focus();
+  if (!open && was) toggle.focus();
   updateBookBar();
 }
 toggle.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
@@ -21,6 +28,7 @@ const includes = document.querySelector('[data-open-desktop]');
 const syncIncludes = () => { if (desktop.matches) includes.open = true; };
 syncIncludes();
 desktop.addEventListener('change', syncIncludes);
+includes.addEventListener('toggle', syncIncludes);
 
 // Random promo: one of her shops or socials, once per visit
 const promo = document.querySelector('.promo');
@@ -59,11 +67,18 @@ function fillPromo() {
   cta.textContent = p.cta + ' ↗';
   cta.href = p.url;
 }
+let promoAutoHide;
 function showPromo() {
   if (store.get('kaePromo') || menu.classList.contains('open')) return;
   fillPromo();
   promo.classList.add('show');
   promo.setAttribute('aria-hidden', 'false');
+  // On phones it sits over the page, so it steps aside on its own after a while
+  armPromoTimer();
+}
+function armPromoTimer() {
+  clearTimeout(promoAutoHide);
+  if (!desktop.matches) promoAutoHide = setTimeout(() => hidePromo(true), 9000);
 }
 function hidePromo(forGood) {
   promo.classList.remove('show');
@@ -71,7 +86,7 @@ function hidePromo(forGood) {
   if (forGood) store.set('kaePromo', 'done');
 }
 promo.querySelector('.promo-close').addEventListener('click', () => hidePromo(true));
-promo.querySelector('.promo-next').addEventListener('click', fillPromo);
+promo.querySelector('.promo-next').addEventListener('click', () => { fillPromo(); armPromoTimer(); });
 promo.querySelector('.promo-cta').addEventListener('click', () => setTimeout(() => hidePromo(true), 300));
 
 // Show it once the visitor has scrolled past the hero and spent a few seconds on the page
@@ -112,7 +127,8 @@ document.querySelectorAll('[data-rail]').forEach((rail) => {
   const marks = [...dots.children];
   const update = () => {
     const step = items[1] ? items[1].offsetLeft - items[0].offsetLeft : 1;
-    const i = Math.min(items.length - 1, Math.round(rail.scrollLeft / step));
+    const atEnd = rail.scrollLeft >= rail.scrollWidth - rail.clientWidth - 2;
+    const i = atEnd ? items.length - 1 : Math.min(items.length - 1, Math.round(rail.scrollLeft / step));
     marks.forEach((m, n) => m.classList.toggle('on', n === i));
   };
   rail.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
@@ -154,12 +170,14 @@ const forms = [...document.querySelectorAll('.client-form')];
 const formDone = document.querySelector('.form-done');
 
 function selectForm(id) {
+  if (!formDone.hidden) return;                            // already sent: keep the thank-you screen
   tabs.forEach((t) => {
     const on = t.getAttribute('aria-controls') === id;
     t.setAttribute('aria-selected', on);
     t.tabIndex = on ? 0 : -1;
   });
   forms.forEach((f) => (f.hidden = f.id !== id));
+  relayout();
 }
 tabs.forEach((t) => t.addEventListener('click', () => selectForm(t.getAttribute('aria-controls'))));
 document.querySelector('.form-tabs').addEventListener('keydown', (e) => {
@@ -184,7 +202,8 @@ document.querySelectorAll('.upload input[type=file]').forEach((input) => {
       const div = document.createElement('div');
       div.className = 'thumb';
       div.innerHTML = `<img src="${url}" alt=""><button type="button" aria-label="Remove photo">×</button>`;
-      div.querySelector('img').onload = () => URL.revokeObjectURL(url);
+      const img = div.querySelector('img');
+      img.onload = img.onerror = () => URL.revokeObjectURL(url);
       div.querySelector('button').onclick = () => { picked.get(input).splice(i, 1); render(); };
       thumbs.append(div);
     });
@@ -193,6 +212,7 @@ document.querySelectorAll('.upload input[type=file]').forEach((input) => {
     clearError(input.closest('.field'));
     const form = input.form;
     if (!form.querySelector('.invalid')) form.querySelector('.form-error').hidden = true;
+    relayout();
   };
   input.addEventListener('change', () => {
     const list = picked.get(input);
@@ -204,19 +224,24 @@ document.querySelectorAll('.upload input[type=file]').forEach((input) => {
 
 function setError(field, msg) {
   field.classList.add('invalid');
+  field.querySelectorAll('input, textarea').forEach((el) => el.setAttribute('aria-invalid', 'true'));
   let err = field.querySelector(':scope > .err');
   if (!err) { err = document.createElement('span'); err.className = 'err'; field.append(err); }
   err.textContent = msg;
 }
 function clearError(field) {
   if (!field) return;
+  if (!field.classList.contains('invalid')) return;
   field.classList.remove('invalid');
+  field.querySelectorAll('[aria-invalid]').forEach((el) => el.removeAttribute('aria-invalid'));
   field.querySelector(':scope > .err')?.remove();
+  relayout();                                              // heights changed
+  syncSnapPause();
 }
 forms.forEach((form) => {
   const onEdit = (e) => {
     clearError(e.target.closest('.field'));
-    if (!form.querySelector('.invalid')) form.querySelector('.form-error').hidden = true;
+    if (!form.querySelector('.invalid')) { form.querySelector('.form-error').hidden = true; syncSnapPause(); }
   };
   form.addEventListener('input', onEdit);
   form.addEventListener('change', onEdit);
@@ -252,6 +277,7 @@ async function shrink(file, maxSide = 1600) {
     canvas.width = Math.round(bmp.width * scale);
     canvas.height = Math.round(bmp.height * scale);
     canvas.getContext('2d').drawImage(bmp, 0, 0, canvas.width, canvas.height);
+    bmp.close();
     const blob = await new Promise((r) => canvas.toBlob(r, 'image/jpeg', 0.82));
     return blob ? new File([blob], file.name.replace(/\.\w+$/, '') + '.jpg', { type: 'image/jpeg' }) : file;
   } catch {
@@ -266,11 +292,19 @@ forms.forEach((form) => form.addEventListener('submit', async (e) => {
   if (bad.length) {
     banner.textContent = bad.length === 1 ? 'One thing needs a quick fix ↓' : `${bad.length} things need a quick fix ↓`;
     banner.hidden = false;
-    bad[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    relayout();
+    syncSnapPause();
+    bad[0].scrollIntoView({ behavior: glide(), block: 'center' });
     bad[0].querySelector('input, textarea')?.focus({ preventScroll: true });
     return;
   }
   banner.hidden = true;
+  if (form.dataset.busy) return;
+  form.dataset.busy = '1';
+  const btn = form.querySelector('.submit');
+  const label = btn.innerHTML;
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
 
   const data = new FormData();
   data.append('form', form.dataset.form);
@@ -279,10 +313,6 @@ forms.forEach((form) => form.addEventListener('submit', async (e) => {
     for (const f of picked.get(input)) data.append(input.name, await shrink(f));
   }
 
-  const btn = form.querySelector('.submit');
-  const label = btn.innerHTML;
-  btn.disabled = true;
-  btn.textContent = 'Sending…';
   try {
     if (FORM_ENDPOINT) {
       const res = await fetch(FORM_ENDPOINT, { method: 'POST', body: data });
@@ -296,13 +326,194 @@ forms.forEach((form) => form.addEventListener('submit', async (e) => {
     forms.forEach((f) => (f.hidden = true));
     document.querySelector('.form-tabs').hidden = true;
     formDone.hidden = false;
+    relayout();
     formDone.focus({ preventScroll: true });
-    formDone.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    formDone.scrollIntoView({ behavior: glide(), block: 'center' });
   } catch {
     banner.textContent = 'Something went wrong sending your info. Please try again, or email kaetheblondie@gmail.com.';
     banner.hidden = false;
+    relayout();
   } finally {
+    delete form.dataset.busy;
     btn.disabled = false;
     btn.innerHTML = label;
   }
 }));
+
+// ---------- Phones: one screen per swipe ----------
+// Each section's blocks are grouped into screen-sized pages. Every page is padded to exactly one screen
+// (content centered) and CSS scroll snapping on html.swipe moves one page per swipe, like a video feed.
+const root = document.documentElement;
+const header = document.querySelector('.site-header');
+const units = [...document.querySelectorAll('main > section, .site-footer')];
+const dotsNav = document.querySelector('.screen-dots');
+const hint = document.querySelector('.swipe-hint');
+let pages = [], screenH = 0, layoutWidth = 0;
+
+const docTop = (el) => { let y = 0; for (let n = el; n; n = n.offsetParent) y += n.offsetTop; return y; };
+const plain = (el) => getComputedStyle(el).backgroundColor === 'rgba(0, 0, 0, 0)';   // no card behind it
+
+// Blocks a page can start on; anything taller than a screen is split into its block-level children.
+const isInline = (el) => getComputedStyle(el).display.startsWith('inline');
+function blocksOf(el, limit) {
+  const out = [];
+  for (const c of el.children) {
+    const pos = getComputedStyle(c).position;
+    if (c.hidden || !c.offsetHeight || pos === 'absolute' || pos === 'fixed') continue;
+    if (c.offsetHeight > limit && c.children.length > 1 && ![...c.children].some(isInline)) out.push(...blocksOf(c, limit));
+    else out.push(c);
+  }
+  return out;
+}
+
+// Inline styles the layout changes, so every re-layout starts from the page's own styles.
+const touched = new Map();
+function setStyle(el, prop, value) {
+  if (!touched.has(el)) touched.set(el, { marginTop: el.style.marginTop, marginBottom: el.style.marginBottom, scrollMarginTop: el.style.scrollMarginTop });
+  el.style[prop] = value;
+}
+
+function measureScreen() {
+  const probe = document.createElement('div');
+  probe.style.cssText = 'position:fixed;top:0;height:100svh;visibility:hidden;pointer-events:none';
+  document.body.append(probe);
+  screenH = probe.offsetHeight || window.innerHeight;
+  probe.remove();
+  layoutWidth = window.innerWidth;
+}
+
+function layoutScreens() {
+  for (const [el, original] of touched) Object.assign(el.style, original);
+  touched.clear();
+  pages.forEach((p) => p.first.classList.remove('screen'));
+  pages = [];
+  const on = !desktop.matches && screenH >= 520;          // phones held upright (landscape scrolls normally)
+  root.classList.toggle('swipe', on);
+  dotsNav.hidden = !on;
+  if (!on) return;
+
+  const pageH = screenH - header.offsetHeight;            // what one swipe scrolls
+  const reserve = bookBar.offsetHeight + 20;               // keep clear for the sticky Book bar
+  const room = pageH - reserve;
+
+  for (const unit of units) {
+    const wrap = unit.querySelector(':scope > .wrap') || unit;
+    const blocks = blocksOf(wrap, room - 96);              // leave room for the section's own spacing
+    const tail = unit.classList.contains('hero') ? unit.nextElementSibling : null;   // the marquee ribbon
+    if (tail?.classList.contains('marquee')) blocks.push(tail);
+    blocks.sort((a, b) => docTop(a) - docTop(b));              // visual order (CSS may reorder)
+    if (!blocks.length) continue;
+    const uTop = docTop(unit);
+    const uEnd = tail ? docTop(tail) + tail.offsetHeight : uTop + unit.offsetHeight;
+    let page = null;
+    for (const b of blocks) {
+      const top = docTop(b), bottom = top + b.offsetHeight;
+      if (page && bottom - page.top <= room) { page.last = b; page.bottom = bottom; page.end = bottom; continue; }
+      page = { first: b, last: b, top, bottom, end: bottom, start: page ? page.bottom : uTop, unit };
+      pages.push(page);
+    }
+    page.end = uEnd;
+  }
+
+  // Measure first, then pad, so each page is: top gap + content + bottom gap = one screen.
+  // Short pages get blank space (content centered above the Book bar); tall ones lose some of their top gap.
+  const plan = pages.map((p, i) => {
+    let lead = p.top - p.start;
+    const trail = p.end - p.bottom;
+    const extra = pageH - (lead + (p.bottom - p.top) + trail);
+    if (extra < 0) {
+      if (i) lead = Math.max(12, lead + extra);
+      return { p, lead, t: 0, b: 0 };
+    }
+    if (!plain(p.first.parentElement) || !plain(p.last.parentElement)) return { p, lead, t: 0, b: 0 };
+    const keep = Math.min(reserve, extra), free = extra - keep;
+    const t = Math.max(0, Math.min(free, (free + trail - lead) / 2));
+    return { p, lead, t, b: free - t + keep };
+  });
+  // Read every base margin before writing any (one layout pass). In normal flow a block's top margin
+  // collapses with the one above, so the collapsed gap is the base.
+  const baseTop = (el) => {
+    let base = parseFloat(getComputedStyle(el).marginTop);
+    const prev = el.previousElementSibling;
+    if (prev && getComputedStyle(el.parentElement).display === 'block') base = Math.max(base, parseFloat(getComputedStyle(prev).marginBottom));
+    return base;
+  };
+  const writes = plan.map(({ p, lead, t, b }, i) => {
+    const sameUnitBefore = i && plan[i - 1].p.unit === p.unit;
+    const lastInUnit = !plan[i + 1] || plan[i + 1].p.unit !== p.unit;
+    const top = t + (sameUnitBefore ? plan[i - 1].b : 0);          // a page's bottom space sits on top of the next page
+    return {
+      p, lead, t,
+      top: top ? baseTop(p.first) + top : null,
+      bottom: lastInUnit && b ? parseFloat(getComputedStyle(p.last).marginBottom) + b : null,
+    };
+  });
+  for (const { p, lead, t, top, bottom } of writes) {
+    if (top !== null) setStyle(p.first, 'marginTop', `${top}px`);
+    if (bottom !== null) setStyle(p.last, 'marginBottom', `${bottom}px`);
+    setStyle(p.first, 'scrollMarginTop', `${lead + t}px`);
+    p.first.classList.add('screen');
+  }
+}
+
+let layoutQueued = false;
+function relayout() {
+  if (layoutQueued) return;
+  layoutQueued = true;
+  setTimeout(() => { layoutQueued = false; layoutScreens(); }, 60);
+}
+
+// Section dots on the right edge: where you are, tap to jump
+const labelled = units.filter((u) => u.dataset.label);
+dotsNav.innerHTML = labelled.map((u) => `<button type="button" aria-label="${u.dataset.label}"><i></i></button>`).join('')
+  + '<span class="screen-label" aria-hidden="true"></span>';
+const dotBtns = [...dotsNav.querySelectorAll('button')];
+const dotLabel = dotsNav.querySelector('.screen-label');
+dotBtns.forEach((btn, i) => btn.addEventListener('click', () => {
+  (labelled[i].querySelector('.screen') || labelled[i]).scrollIntoView({ behavior: glide(), block: 'start' });
+}));
+let current = -1, labelTimer;
+const sectionWatch = new IntersectionObserver((entries) => {
+  for (const e of entries) {
+    if (!e.isIntersecting) continue;
+    const i = labelled.indexOf(e.target);
+    if (i === current) continue;
+    current = i;
+    dotBtns.forEach((b, n) => b.toggleAttribute('aria-current', n === i));
+    dotLabel.textContent = labelled[i].dataset.label;
+    dotLabel.style.top = `${dotBtns[i].offsetTop + dotBtns[i].offsetHeight / 2}px`;
+    dotsNav.classList.add('talk');
+    clearTimeout(labelTimer);
+    labelTimer = setTimeout(() => dotsNav.classList.remove('talk'), 1400);
+  }
+}, { rootMargin: '-50% 0px -50% 0px' });
+labelled.forEach((u) => sectionWatch.observe(u));
+
+// "Swipe up" hint until the first swipe
+if (!store.get('kaeSwiped')) {
+  hint.hidden = false;
+  const done = () => {
+    if (window.scrollY < 40) return;
+    hint.classList.add('gone');
+    store.set('kaeSwiped', '1');
+    window.removeEventListener('scroll', done);
+  };
+  window.addEventListener('scroll', done, { passive: true });
+}
+
+// No snapping while typing in a form (the keyboard resizes the screen) or while a form shows errors
+const TYPING = 'input:not([type=checkbox]):not([type=radio]):not([type=file]), textarea, select';
+function syncSnapPause() {
+  root.classList.toggle('typing', !!document.activeElement?.matches(TYPING) || !!document.querySelector('.client-form .invalid'));
+}
+document.addEventListener('focusin', syncSnapPause);
+document.addEventListener('focusout', () => setTimeout(syncSnapPause, 100));
+
+// Re-measure when the layout really changes (not when the phone's address bar slides)
+measureScreen();
+layoutScreens();
+document.fonts?.ready.then(relayout);
+window.addEventListener('load', relayout);
+window.addEventListener('resize', () => { if (window.innerWidth !== layoutWidth) { measureScreen(); relayout(); } });
+desktop.addEventListener('change', relayout);
+includes.addEventListener('toggle', relayout);

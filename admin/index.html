@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F5F1EB">
+<title>Admin — Beauty by Kae</title>
+<link rel="icon" href="../brand/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="kae-mark" viewBox="0 0 200 260">
+    <g fill="none">
+      <path d="M28 248V100a44 44 0 0 1 44-44h56a44 44 0 0 1 44 44v148" stroke="currentColor" stroke-width="5.5"/>
+      <path d="M40 248V100a32 32 0 0 1 32-32h56a32 32 0 0 1 32 32v148" stroke="currentColor" stroke-width="1.8"/>
+      <line x1="16" y1="248" x2="184" y2="248" stroke="currentColor" stroke-width="5.5"/>
+      <g transform="translate(-9 0)">
+        <rect x="65" y="92" width="24" height="124" fill="currentColor"/>
+        <rect x="53" y="88" width="48" height="7" fill="currentColor"/>
+        <rect x="53" y="213" width="48" height="7" fill="currentColor"/>
+        <path d="M86 162 L135 96" stroke="currentColor" stroke-width="8"/>
+        <rect x="118" y="88" width="36" height="7" fill="currentColor"/>
+        <path d="M88 134 C116 147 108 171 125 181 C142 191 133 205 153 213 C159 215 164 213 168 206 C167 223 155 230 142 228 C113 223 121 205 107 195 C93 185 103 169 88 166 Z" fill="currentColor"/>
+        <path d="M97 141 C121 153 116 174 132 182 C147 190 142 202 161 206 C167 207 171 204 174 198" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M89 172 C99 181 97 194 104 204 C111 214 119 225 135 232" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </g>
+      <path d="M160 26 C161.8 36 164.6 38.6 174 40.4 C164.6 42.2 161.8 45 160 55 C158.2 45 155.4 42.2 146 40.4 C155.4 38.6 158.2 36 160 26Z" fill="#FF3EA5"/>
+      <circle cx="178" cy="56" r="3.2" fill="#FF3EA5"/>
+    </g>
+  </symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></symbol>
+</svg>
+
+<header class="bar">
+  <a class="brand" href="#menu" aria-label="Admin home">
+    <svg aria-hidden="true"><use href="#kae-mark"/></svg>
+    <span><span class="by">Beauty by</span><span class="name">Kae</span></span>
+  </a>
+  <span class="tag">Admin</span>
+  <button class="link-btn" id="logout" hidden>Log out</button>
+</header>
+
+<main>
+
+  <!-- Login -->
+  <section class="view login" data-view="login" hidden>
+    <form class="login-card" id="login-form" novalidate>
+      <svg class="mark" aria-hidden="true"><use href="#kae-mark"/></svg>
+      <h1>Welcome <em>back</em></h1>
+      <p class="muted">Enter the admin password to continue.</p>
+      <label class="field">
+        <span>Password</span>
+        <input type="password" name="password" autocomplete="current-password" required>
+      </label>
+      <p class="form-error" id="login-error" role="alert" hidden></p>
+      <button class="btn dark" type="submit">Log in <span aria-hidden="true">→</span></button>
+      <a class="back-site" href="../">← Back to the website</a>
+    </form>
+  </section>
+
+  <!-- Menu -->
+  <section class="view menu" data-view="menu" hidden>
+    <span class="eyebrow">Dashboard</span>
+    <h1>Hi Kae<em>.</em></h1>
+    <div class="tiles">
+      <a class="tile" href="#appointments">
+        <svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg>
+        <span class="t-title">Appointments</span>
+        <span class="t-sub" id="tile-sub">Your calendar, month by month</span>
+        <span class="go">Open →</span>
+      </a>
+      <div class="tile soon" aria-disabled="true">
+        <span class="t-title">More coming soon</span>
+        <span class="t-sub">Clients, requests from the website…</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Appointments -->
+  <section class="view appts" data-view="appointments" hidden>
+    <div class="appts-head">
+      <a class="link-btn back" href="#menu">← Menu</a>
+      <div class="month-nav">
+        <button class="round" id="prev" aria-label="Previous month">‹</button>
+        <h1 id="month-title">Month</h1>
+        <button class="round" id="next" aria-label="Next month">›</button>
+      </div>
+      <div class="head-actions">
+        <div class="view-toggle" role="group" aria-label="Calendar view">
+          <button type="button" data-mode="month" aria-pressed="true">Month</button>
+          <button type="button" data-mode="day" aria-pressed="false">Day</button>
+        </div>
+        <button class="btn light" id="today">Today</button>
+        <button class="btn dark" id="add">+ New<span class="wide-only"> appointment</span></button>
+      </div>
+    </div>
+
+    <div class="appts-body">
+      <div class="calendar" id="calendar" aria-live="polite">
+        <div class="dow"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+        <div class="grid" id="grid"></div>
+      </div>
+
+      <div class="dayview" id="dayview" hidden>
+        <div class="dv-allday" id="dv-allday" hidden></div>
+        <div class="timeline" id="timeline"></div>
+      </div>
+
+      <aside class="day-panel" id="day-panel">
+        <div class="dp-head">
+          <div>
+            <span class="eyebrow" id="dp-weekday">Day</span>
+            <h2 id="dp-date">Date</h2>
+          </div>
+          <button class="btn dark small" id="dp-add">+ Add</button>
+        </div>
+        <ul class="dp-list" id="dp-list"></ul>
+        <p class="dp-empty muted" id="dp-empty">No appointments this day.</p>
+        <button class="link-btn dp-hours" id="dp-hours">See this day by hour →</button>
+      </aside>
+    </div>
+  </section>
+
+</main>
+
+<!-- Add / edit appointment -->
+<dialog class="sheet" id="editor">
+  <form method="dialog" id="appt-form" novalidate>
+    <div class="sheet-head">
+      <h2 id="editor-title">New appointment</h2>
+      <button type="button" class="round" id="editor-close" aria-label="Close">×</button>
+    </div>
+    <div class="row">
+      <label class="field"><span>Date</span><input type="date" name="date" required></label>
+      <label class="field"><span>Time</span><input type="time" name="time" step="900"></label>
+    </div>
+    <label class="field"><span>Length</span>
+      <select name="duration">
+        <option value="30">30 min</option><option value="45">45 min</option><option value="60" selected>1 hour</option>
+        <option value="90">1 h 30 min</option><option value="120">2 hours</option><option value="150">2 h 30 min</option>
+        <option value="180">3 hours</option><option value="210">3 h 30 min</option><option value="240">4 hours</option>
+        <option value="300">5 hours</option><option value="360">6 hours</option><option value="480">8 hours</option>
+      </select>
+    </label>
+    <label class="field"><span>Instagram</span>
+      <span class="at-input"><b>@</b><input name="instagram" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="kaetheblondie"></span>
+    </label>
+    <label class="field"><span>Name <i>(optional)</i></span><input name="name" autocomplete="off"></label>
+    <label class="field"><span>Service <i>(optional)</i></span><input name="service" list="services" autocomplete="off"></label>
+    <datalist id="services">
+      <option value="Full custom color"><option value="Partial custom color"><option value="Baby highlight">
+      <option value="Base + tone"><option value="Gloss refresh"><option value="Haircut">
+      <option value="Hand-tied extensions — install"><option value="Extensions move-up"><option value="Consultation">
+    </datalist>
+    <label class="field"><span>Notes <i>(optional)</i></span><textarea name="notes" rows="3"></textarea></label>
+    <p class="form-error" id="editor-error" role="alert" hidden></p>
+    <div class="sheet-actions">
+      <button type="button" class="link-btn danger" id="delete" hidden>Delete</button>
+      <button type="submit" class="btn dark" value="save">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="admin.js"></script>
+</body>
+</html>

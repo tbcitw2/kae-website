@@ -92,6 +92,44 @@ section { padding: 64px 0; }
 .btn.pink { background: var(--pink); }
 .btn .arrow { font-size: 18px; line-height: 1; }
 
+/* ---------- Phones: one screen per swipe (pages are laid out in main.js) ---------- */
+html.swipe { scroll-snap-type: y mandatory; scroll-padding-top: var(--header-h); }
+html.swipe .screen { scroll-snap-align: start; scroll-snap-stop: always; }
+html.swipe.typing { scroll-snap-type: none; }   /* no jumps while the keyboard is open */
+/* phones: the shop buttons sit under the intro, so the photos get their own screen */
+html.swipe .closet .wrap { display: flex; flex-direction: column; }
+html.swipe .closet-actions { order: -1; margin: 0 0 28px; }
+html.swipe .closet-head { order: -2; }
+
+.screen-dots {
+  position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 40;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+}
+.screen-dots button { display: grid; place-items: center; width: 16px; height: 18px; padding: 0; border: 0; background: none; cursor: pointer; }
+.screen-dots i {
+  width: 6px; height: 6px; border-radius: 99px; background: color-mix(in srgb, var(--ink) 30%, transparent);
+  box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--cream) 80%, transparent); transition: height .25s ease, background .25s ease;
+}
+.screen-dots [aria-current] i { height: 16px; background: var(--pink); }
+.screen-label {
+  position: absolute; right: 20px; transform: translate(6px, -50%); opacity: 0; pointer-events: none;
+  padding: 5px 10px; border-radius: 999px; background: var(--ink); color: var(--cream);
+  font: 700 12px var(--sans); white-space: nowrap; transition: opacity .25s ease, transform .25s ease;
+}
+.screen-dots.talk .screen-label { opacity: 1; transform: translate(0, -50%); }
+
+.swipe-hint {
+  position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom)); z-index: 45; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0; pointer-events: none;
+  padding: 8px 18px 9px; border-radius: 999px; background: var(--ink); color: var(--cream);
+  font: 700 13px var(--sans); letter-spacing: .04em; box-shadow: 3px 3px 0 var(--pink);
+  transition: opacity .35s ease, transform .35s ease;
+}
+.swipe-hint svg { width: 20px; height: 20px; color: var(--pink); animation: hint-bob 1.3s ease-in-out infinite; }
+.swipe-hint.gone { opacity: 0; transform: translate(-50%, 20px); }
+html:not(.swipe) .swipe-hint { display: none; }
+@keyframes hint-bob { 50% { transform: translateY(-5px); } }
+
 /* ---------- Header ---------- */
 .site-header {
   position: sticky; top: 0; z-index: 60;
@@ -287,6 +325,7 @@ section { padding: 64px 0; }
 }
 .includes summary::-webkit-details-marker { display: none; }
 .includes summary h3 { font-size: 22px; line-height: 1.2; }
+.know-head { margin-bottom: 20px; }
 .includes summary small { display: block; font: 500 14px var(--sans); color: rgba(245,241,235,.75); margin-top: 4px; }
 .includes summary .plus {
   flex: none; width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--cream);
@@ -407,7 +446,6 @@ a.fave:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink)
 .book .eyebrow::before { color: var(--white); }
 .book h2 { font-size: clamp(42px, 11.5vw, 104px); line-height: 1; }
 .book p { max-width: 46ch; margin: 18px auto 28px; font-size: 17.5px; }
-.book-actions { display: grid; gap: 14px; max-width: 440px; margin: 0 auto; }
 .book .btn.dark { box-shadow: 4px 4px 0 var(--white); }
 .book .fine { font-size: 16px; margin-top: 26px; margin-bottom: 0; }
 .book .fine a { font-weight: 700; overflow-wrap: anywhere; }
@@ -423,6 +461,7 @@ a.fave:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink)
 .site-footer h4 { font: 700 13px var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--honey); margin: 0 0 8px; }
 .site-footer ul { list-style: none; margin: 0; padding: 0; }
 .site-footer li a { display: block; padding: 8px 0; text-decoration: none; color: rgba(245,241,235,.88); }
+.foot-credit { margin-top: 22px; text-align: center; font-family: var(--sans); }
 .foot-bottom { border-top: 1px solid rgba(245,241,235,.15); margin-top: 36px; padding-top: 20px; display: grid; gap: 8px; font-size: 14px; color: rgba(245,241,235,.7); }
 
 /* ---------- Sticky book bar (phones) ---------- */
@@ -446,7 +485,7 @@ a.fave:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink)
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .marquee-track, .badge svg.ring { animation: none; }
+  .marquee-track, .badge svg.ring, .swipe-hint svg, .site-header.bar-on .nav-faves { animation: none; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
 }
 
@@ -465,7 +504,6 @@ a.fave:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink)
   :root { --gutter: 28px; }
   .rail { grid-auto-columns: 46%; }
   .hero-actions, .closet-actions { display: flex; flex-wrap: wrap; }
-  .book-actions { display: flex; flex-wrap: wrap; justify-content: center; max-width: none; }
   .know-grid { grid-template-columns: 1fr 1fr; }
   .know-card.hl { grid-column: 1 / -1; }
   .fave-grid { grid-template-columns: 1fr 1fr; }
