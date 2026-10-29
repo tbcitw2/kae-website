@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beauty by Kae — Blonding, Lived-in Color & Hand-tied Extensions</title>
+<meta name="description" content="Kaelyn (Kae) is an independent hairstylist specializing in seamless blondes, lived-in color and hand-tied extensions. 2× Top 100 nominee.">
+<meta name="theme-color" content="#F5F1EB">
+<link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Beauty by Kae">
+<meta property="og:description" content="Seamless blondes, lived-in color & hand-tied extensions.">
+<meta property="og:image" content="img/hero-kae.jpg">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&family=Karla:wght@400;500;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Logo mark + icons, reused with <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="kae-mark" viewBox="0 0 200 260" fill="none">
+  <!-- Arch: salon mirror / boutique window, squared-off top -->
+  <path d="M28 248V100a44 44 0 0 1 44-44h56a44 44 0 0 1 44 44v148" stroke="currentColor" stroke-width="5.5"/>
+  <path d="M40 248V100a32 32 0 0 1 32-32h56a32 32 0 0 1 32 32v148" stroke="currentColor" stroke-width="1.8"/>
+  <line x1="16" y1="248" x2="184" y2="248" stroke="currentColor" stroke-width="5.5"/>
+  <g transform="translate(-9 0)">
+    <!-- K stem: heavy stroke with slab-ish serifs -->
+    <rect x="65" y="92" width="24" height="124" fill="currentColor"/>
+    <rect x="53" y="88" width="48" height="7" fill="currentColor"/>
+    <rect x="53" y="213" width="48" height="7" fill="currentColor"/>
+    <!-- K arm -->
+    <path d="M86 162 L135 96" stroke="currentColor" stroke-width="8" stroke-linecap="butt"/>
+    <rect x="118" y="88" width="36" height="7" fill="currentColor"/>
+    <!-- K leg: a lock of wavy hair -->
+    <path d="M88 134
+             C116 147 108 171 125 181
+             C142 191 133 205 153 213
+             C159 215 164 213 168 206
+             C167 223 155 230 142 228
+             C113 223 121 205 107 195
+             C93 185 103 169 88 166 Z" fill="currentColor"/>
+    <path d="M97 141 C121 153 116 174 132 182 C147 190 142 202 161 206 C167 207 171 204 174 198" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M89 172 C99 181 97 194 104 204 C111 214 119 225 135 232" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  </g>
+  <!-- Pink sparkle (her signature hot-pink nails), twinkling off the corner -->
+  <path d="M160 26 C161.8 36 164.6 38.6 174 40.4 C164.6 42.2 161.8 45 160 55 C158.2 45 155.4 42.2 146 40.4 C155.4 38.6 158.2 36 160 26Z" fill="#FF3EA5"/>
+  <circle cx="178" cy="56" r="3.2" fill="#FF3EA5"/>
+  </symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-tiktok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.4 5 4.6"/></symbol>
+  <symbol id="i-youtube" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor"/></symbol>
+  <symbol id="i-lemon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M5 15.5C3 11 6.5 5 12.5 4.5c2-.2 3.4.4 4.5 1.3 1.6.4 2.6 1.3 2.6 1.3s-.3 1.4-1 2.3c.8 4.6-3 9.4-8.2 9.8-2.6.2-4.4-1.4-5.4-3.7z"/><path d="M8.5 15.5 15 9"/></symbol>
+</svg>
+
+<header class="site-header">
+  <nav class="nav wrap" aria-label="Main">
+    <a class="brand" href="#top" aria-label="Beauty by Kae — home">
+      <svg viewBox="0 0 200 260" aria-hidden="true"><use href="#kae-mark"/></svg>
+      <span><span class="by">Beauty by</span><span class="name">Kae</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">The work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#extensions">Extensions</a></li>
+      <li><a href="#faves">Shop</a></li>
+      <li><a class="btn dark" href="#book">Book with Kae</a></li>
+    </ul>
+    <div class="nav-actions">
+      <span class="nav-swap">
+        <a class="nav-book" href="#book">Book with Kae</a>
+        <a class="nav-faves" href="#faves">Kae’s faves <span aria-hidden="true">✦</span></a>
+      </span>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <ul>
+    <li><a href="#about">About Kae</a></li>
+    <li><a href="#work">The work</a></li>
+    <li><a href="#services">Services & prices</a></li>
+    <li><a href="#extensions">Extensions</a></li>
+    <li><a href="#style">Off duty</a></li>
+    <li><a href="#faves">Kae’s faves</a></li>
+  </ul>
+  <a class="btn dark" href="#book">Become a client <span class="arrow">→</span></a>
+  <div class="menu-shop">
+    <a class="btn" href="https://www.shopltk.com/explore/Kaetheblondie" target="_blank" rel="noopener">Shop my LTK ↗</a>
+    <a class="btn pink" href="https://www.amazon.com/shop/kaelynemily" target="_blank" rel="noopener">Amazon favs ↗</a>
+  </div>
+  <div class="menu-social">
+    <a href="https://instagram.com/kaetheblondie" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-instagram"/></svg></a>
+    <a href="https://www.tiktok.com/@kaetheblondie" target="_blank" rel="noopener" aria-label="TikTok"><svg><use href="#i-tiktok"/></svg></a>
+    <a href="https://www.youtube.com/@kaetheblondie" target="_blank" rel="noopener" aria-label="YouTube"><svg><use href="#i-youtube"/></svg></a>
+    <a href="https://v.lemon8-app.com/s/jMvwdrpy" target="_blank" rel="noopener" aria-label="Lemon8"><svg><use href="#i-lemon"/></svg></a>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <span class="eyebrow">Independent hairstylist · Idaho</span>
+        <h1>Effortless <em>blondes,</em> <span class="nb">lived-in</span> color<span class="pop">.</span></h1>
+        <p class="lede">Luxury, low-maintenance hair made to fit your life — seamless blonding, dimensional color and hand-tied extensions.</p>
+        <div class="hero-actions">
+          <a class="btn dark" href="#book">Become a client <span class="arrow">→</span></a>
+          <a class="btn" href="#services">See services & prices</a>
+        </div>
+        <ul class="hero-facts">
+          <li><b>2x</b>Top 100 nominee</li>
+          <li><b>2018</b>Behind the chair since</li>
+          <li><b>100%</b>Independent stylist</li>
+        </ul>
+      </div>
+      <div class="hero-photo reveal">
+        <div class="arch">
+          <img src="img/sm/hero-kae.jpg" srcset="img/sm/hero-kae.jpg 665w, img/hero-kae.jpg 931w" sizes="(min-width: 900px) 460px, 92vw" width="665" height="1000" alt="Kae, smiling, with long blonde waves, wearing a black jacket and combat boots" fetchpriority="high">
+        </div>
+        <div class="badge" aria-hidden="true">
+          <svg class="ring" viewBox="0 0 138 138">
+            <defs><path id="hero-circ" d="M69 69 m-52 0 a52 52 0 1 1 104 0 a52 52 0 1 1 -104 0"/></defs>
+            <text font-family="Karla" font-weight="700" font-size="10" letter-spacing="2.1" fill="currentColor"><textPath href="#hero-circ">YOUR GO-TO HAIR GIRL ✦ YOUR GO-TO HAIR GIRL ✦</textPath></text>
+          </svg>
+          <span class="mid">Kae</span>
+        </div>
+        <span class="sticker">Blonde specialist</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Seamless blondes<i>✦</i>Lived-in color<i>✦</i>Hand-tied extensions<i>✦</i>Brunette to blonde<i>✦</i>Glosses & refreshes<i>✦</i>Custom cuts<i>✦</i></span>
+      <span>Seamless blondes<i>✦</i>Lived-in color<i>✦</i>Hand-tied extensions<i>✦</i>Brunette to blonde<i>✦</i>Glosses & refreshes<i>✦</i>Custom cuts<i>✦</i></span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div class="about-photos reveal">
+        <img class="main" src="img/sm/kae-portrait.jpg" srcset="img/sm/kae-portrait.jpg 1000w, img/kae-portrait.jpg 1400w" sizes="(min-width: 900px) 420px, 80vw" width="1000" height="1000" alt="Kae in a black leather blazer and lace corset top, hair in motion" loading="lazy">
+        <img class="inset" src="img/sm/kae-bw.jpg" width="675" height="1000" alt="Black-and-white photo of Kae walking in a leather jacket and boots" loading="lazy">
+      </div>
+      <div class="copy reveal">
+        <span class="eyebrow">About me</span>
+        <h2>Hi, <em>besties!</em> I’m Kaelyn.</h2>
+        <p>But you can call me Kae. I’m a small-town girl from Michigan who earned a business degree in South Carolina, graduated from Paul Mitchell, and then moved west to Idaho with the man of my dreams.</p>
+        <p>I specialize in seamless blondes, lived-in color and hand-tied extensions — luxury, low-maintenance hair that helps you feel confident every single day.</p>
+        <p>My promise: to be your biggest cheerleader, your therapist and your go-to hair girl.</p>
+        <ul class="chips">
+          <li>Michigan born 🌲</li>
+          <li>Huge sneaker girlie 👟</li>
+          <li>Fluent in sarcasm</li>
+          <li>Adventure lover</li>
+          <li>Leather & lace</li>
+          <li>Perfectionist with foils</li>
+        </ul>
+        <div class="signature" aria-label="xoxo, Kaelyn">xoxo, Kaelyn</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="work" id="work">
+    <div class="wrap">
+      <div class="work-head reveal">
+        <div>
+          <span class="eyebrow">The work</span>
+          <h2 class="section-title">Fresh out of <em>the chair.</em></h2>
+        </div>
+        <p class="section-intro">Blended, dimensional and made to grow out beautifully. More on Instagram and TikTok.</p>
+      </div>
+      <div class="rail gallery" data-rail>
+        <figure><img src="img/sm/work-02.jpg" srcset="img/sm/work-02.jpg 748w, img/work-02.jpg 1048w" sizes="(min-width: 900px) 270px, 76vw" width="748" height="1000" alt="Soft blonde balayage with face-framing pieces" loading="lazy"><figcaption>Lived-in blonde</figcaption></figure>
+        <figure><img src="img/sm/work-04.jpg" srcset="img/sm/work-04.jpg 748w, img/work-04.jpg 1048w" sizes="(min-width: 900px) 270px, 76vw" width="748" height="1000" alt="Bright, creamy blonde with a seamless root" loading="lazy"><figcaption>Bright blonde</figcaption></figure>
+        <figure><img src="img/sm/work-01.jpg" srcset="img/sm/work-01.jpg 748w, img/work-01.jpg 1048w" sizes="(min-width: 900px) 270px, 76vw" width="748" height="1000" alt="Rich brunette with soft caramel ribbons" loading="lazy"><figcaption>Bronde</figcaption></figure>
+        <figure><img src="img/sm/work-07.jpg" srcset="img/sm/work-07.jpg 748w, img/work-07.jpg 1048w" sizes="(min-width: 900px) 270px, 76vw" width="748" height="1000" alt="Melted balayage from dark root to blonde ends" loading="lazy"><figcaption>Root melt</figcaption></figure>
+        <figure><img src="img/sm/work-09.jpg" srcset="img/sm/work-09.jpg 663w, img/work-09.jpg 929w" sizes="(min-width: 900px) 270px, 76vw" width="663" height="1000" alt="Long buttery blonde hair" loading="lazy"><figcaption>Buttery blonde</figcaption></figure>
+        <figure><img src="img/sm/work-03.jpg" srcset="img/sm/work-03.jpg 753w, img/work-03.jpg 1054w" sizes="(min-width: 900px) 270px, 76vw" width="753" height="1000" alt="Close-up of dimensional brunette-to-blonde waves" loading="lazy"><figcaption>Dimension</figcaption></figure>
+        <figure><img src="img/sm/work-06.jpg" srcset="img/sm/work-06.jpg 680w, img/work-06.jpg 952w" sizes="(min-width: 900px) 270px, 76vw" width="680" height="1000" alt="Glossy, deep chocolate brunette" loading="lazy"><figcaption>Gloss</figcaption></figure>
+        <figure><img src="img/sm/work-05.jpg" srcset="img/sm/work-05.jpg 748w, img/work-05.jpg 1048w" sizes="(min-width: 900px) 270px, 76vw" width="748" height="1000" alt="Back view of a blended blonde balayage" loading="lazy"><figcaption>Balayage</figcaption></figure>
+      </div>
+      <div class="rail-hint" aria-hidden="true"><span>Swipe for more →</span><span class="rail-dots"></span></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="menu" id="services">
+    <div class="wrap">
+      <div class="menu-head reveal">
+        <span class="eyebrow">Services + pricing</span>
+        <h2 class="section-title">The <em>menu.</em></h2>
+      </div>
+      <div class="menu-grid">
+        <details class="includes reveal" data-open-desktop>
+          <summary>
+            <span><h3>Every color appointment includes</h3><small>6 little luxuries — tap to see</small></span>
+            <span class="plus" aria-hidden="true">+</span>
+          </summary>
+          <div class="body">
+            <ul>
+              <li>A complimentary drink — water or soda</li>
+              <li>Bond regenerator in every bowl of lightener</li>
+              <li>Root melt + gloss/toner, when needed</li>
+              <li>Head scrub & massage with top-of-the-line products</li>
+              <li>Optional haircut</li>
+              <li>Blowout + style</li>
+            </ul>
+            <p class="fine">Extra bowls of lightener are $20 each. Add an intensive hydrating or strengthening treatment for $20.</p>
+          </div>
+        </details>
+        <ol class="menu-list">
+          <li class="menu-item reveal">
+            <div class="menu-row"><h3>Full custom color</h3><span class="dots"></span><span class="price">$300+</span></div>
+            <span class="tag">Most loved</span>
+            <p>A completely personalized color designed around your hair, skin tone and features.</p>
+          </li>
+          <li class="menu-item reveal">
+            <div class="menu-row"><h3>Partial custom color</h3><span class="dots"></span><span class="price">$240+</span></div>
+            <p>Fewer foils, focused placement. A refresh without the full transformation.</p>
+          </li>
+          <li class="menu-item reveal">
+            <div class="menu-row"><h3>Baby highlight</h3><span class="dots"></span><span class="price">$180</span></div>
+            <p>10–15 foils around your face and/or part for a soft, sunlit glow.</p>
+          </li>
+          <li class="menu-item reveal">
+            <div class="menu-row"><h3>Base + tone</h3><span class="dots"></span><span class="price">$150</span></div>
+            <p>Covers grays or deepens your natural shade, plus a gloss for polished ends.</p>
+          </li>
+          <li class="menu-item reveal">
+            <div class="menu-row"><h3>Gloss refresh</h3><span class="dots"></span><span class="price">$100</span></div>
+            <p>Restores shine and softness between color appointments. Haircut optional.</p>
+          </li>
+          <li class="menu-item reveal">
+            <div class="menu-row"><h3>Haircut</h3><span class="dots"></span><span class="price">$75</span></div>
+            <p>A cut customized to you, with a head scrub, blow-dry and style.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXTENSIONS -->
+  <section class="ext" id="extensions">
+    <div class="wrap ext-grid">
+      <div class="ext-photo reveal">
+        <img src="img/sm/ext-closeup.jpg" srcset="img/sm/ext-closeup.jpg 800w, img/ext-closeup.jpg 1120w" sizes="(min-width: 900px) 520px, 92vw" width="800" height="1000" alt="Close-up of a seamless hand-tied extension row blended into blonde hair" loading="lazy">
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Hand-tied extensions</span>
+        <h2 class="section-title">You know you want <em>’em.</em></h2>
+        <p class="ext-lede">Lightweight, comfortable and virtually undetectable. Wear them up, down, straight or curled — with good care, the hair lasts up to a year.</p>
+        <ul class="price-list">
+          <li><span>Hair<small>Most sets land at $700–850</small></span><strong>$500–1,000</strong></li>
+          <li><span>Installation, first row</span><strong>$250</strong></li>
+          <li><span>Each additional row<small>2 rows = $300</small></span><strong>+$50</strong></li>
+        </ul>
+        <p class="moveups-title">Move-ups every 7–8 weeks</p>
+        <div class="moveups">
+          <span><b>$150</b>1 row</span><span><b>$200</b>2 rows</span><span><b>$250</b>3 rows</span>
+        </div>
+        <a class="btn dark" href="#book" data-open-form="ext">Book a free consult <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFF DUTY / FASHION -->
+  <section class="closet" id="style">
+    <div class="wrap">
+      <div class="closet-head reveal">
+        <span class="eyebrow">Off duty</span>
+        <h2 class="section-title">Still <em>styled.</em></h2>
+        <p>Leather, lace, chunky boots and a sneaker collection that’s getting out of hand. Everything I wear lives on my LTK and Amazon storefront.</p>
+      </div>
+      <div class="rail" data-rail>
+        <figure><img src="img/sm/kae-night.jpg" width="665" height="1000" alt="Kae in a yellow satin mini dress on a rooftop at night" loading="lazy"><figcaption>Night out</figcaption></figure>
+        <figure><img src="img/sm/kae-denim.jpg" width="668" height="1000" alt="Kae in a strapless denim top with a bouncy blonde blowout" loading="lazy"><figcaption>Denim on denim</figcaption></figure>
+        <figure>
+          <div class="style-card">
+            <span>Kae’s uniform</span>
+            <ul><li>Leather blazer</li><li>Lace anything</li><li>Chunky boots</li><li>Fresh sneakers</li><li>Gold hoops</li><li>Hot-pink nails</li></ul>
+            <b>Sneaker count: <em>classified.</em></b>
+          </div>
+          <figcaption>The essentials</figcaption>
+        </figure>
+      </div>
+      <div class="rail-hint" aria-hidden="true"><span>Swipe →</span><span class="rail-dots"></span></div>
+      <div class="closet-actions">
+        <a class="btn" href="https://www.shopltk.com/explore/Kaetheblondie" target="_blank" rel="noopener">Shop my LTK <span class="arrow">↗</span></a>
+        <a class="btn pink" href="https://www.amazon.com/shop/kaelynemily" target="_blank" rel="noopener">My Amazon favs <span class="arrow">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAVES / SHOP -->
+  <section class="faves" id="faves">
+    <div class="wrap">
+      <div class="faves-head reveal">
+        <span class="eyebrow">Kae’s faves</span>
+        <h2 class="section-title">Things your hair <em>(and you)</em> will love.</h2>
+      </div>
+      <div class="fave-grid">
+        <a class="fave feature reveal" href="https://stan.store/kaetheblondie" target="_blank" rel="noopener">
+          <div class="txt">
+            <span class="kind">For hairstylists</span>
+            <h3>The Hairstylist Content Playbook</h3>
+            <p>Grow online without losing your mind. My system for creating content behind the chair, sent straight to your inbox.</p>
+            <span class="go">Step up my content game →</span>
+          </div>
+          <span class="price">$24.99</span>
+        </a>
+        <a class="fave reveal" href="https://www.unitehair.com/?rfsn=6927630.0da53c9&amp;utm_source=refersion&amp;utm_medium=affiliate&amp;utm_campaign=6927630.0da53c9" target="_blank" rel="noopener">
+          <span class="kind">Hair care</span>
+          <h3>UNITE Hair</h3>
+          <p>The professional products I trust to keep your color vibrant between appointments.</p>
+          <span class="go">Shop UNITE ↗</span>
+        </a>
+        <div class="fave reveal">
+          <span class="kind">Scalp health</span>
+          <h3>DIVI Scalp Serum</h3>
+          <p>Healthy hair starts at the scalp. Use my code at checkout:</p>
+          <div class="code-row"><span class="code">kaetheblondie</span><button class="copy-btn" data-copy="kaetheblondie">Copy</button></div>
+          <a class="go" href="https://sldr.page.link/nKQ8j" target="_blank" rel="noopener">Shop DIVI ↗</a>
+        </div>
+        <a class="fave reveal" href="https://us.jshealthvitamins.com/products/jshealth-hair-vitamin-60-capsules?utm_source=USAtalent&amp;utm_medium=TikTok&amp;utm_campaign=KaelynEmily" target="_blank" rel="noopener">
+          <span class="kind">From the inside out</span>
+          <h3>JS Health Hair Vitamins</h3>
+          <p>My go-to supplement for stronger, shinier growth.</p>
+          <span class="go">Shop vitamins ↗</span>
+        </a>
+        <a class="fave reveal" href="https://www.jotform.com/products/form-builder/?partner=kaelynmoritsch" target="_blank" rel="noopener">
+          <span class="kind">For your business</span>
+          <h3>Jotform</h3>
+          <p>Online form builder for your business. Get 50% off annual plans.</p>
+          <span class="go">Get 50% off ↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOLLOW -->
+  <section class="follow" id="follow">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">Let’s connect</span>
+        <h2 class="section-title">Come hang <em>with me.</em></h2>
+      </div>
+      <div class="follow-grid">
+        <a class="social reveal" href="https://instagram.com/kaetheblondie" target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-instagram"/></svg>
+          <div><b>Instagram</b><span>@kaetheblondie</span></div>
+        </a>
+        <a class="social reveal" href="https://www.tiktok.com/@kaetheblondie" target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-tiktok"/></svg>
+          <div><b>TikTok</b><span>@kaetheblondie</span></div>
+        </a>
+        <a class="social reveal" href="https://www.youtube.com/@kaetheblondie" target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-youtube"/></svg>
+          <div><b>YouTube</b><span>@kaetheblondie</span></div>
+        </a>
+        <a class="social reveal" href="https://v.lemon8-app.com/s/jMvwdrpy" target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-lemon"/></svg>
+          <div><b>Lemon8</b><span>Outfits & hair tips</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOOD TO KNOW -->
+  <section class="know">
+    <div class="wrap">
+      <div class="reveal" style="margin-bottom:20px"><span class="eyebrow">Good to know</span></div>
+      <div class="know-grid">
+        <div class="know-card hl reveal">
+          <h3>Referral perk ✦</h3>
+          <p>Tag me in 3 photos of your hair on Instagram (posts or stories) before your next visit and pick a FREE luxury treatment or 10% off your service.</p>
+        </div>
+        <div class="know-card reveal">
+          <h3>Running late?</h3>
+          <p>Life happens — just text me. At 15+ minutes late we’ll need to reschedule so I stay on time for everyone.</p>
+        </div>
+        <div class="know-card reveal">
+          <h3>No-shows</h3>
+          <p>Please give at least 24 hours’ notice. A no-call/no-show means a $50 fee before your next appointment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK: on-site client forms (questions copied from her Jotform forms) -->
+  <section class="book" id="book">
+    <div class="wrap">
+      <div class="book-head reveal">
+        <span class="eyebrow">New clients</span>
+        <h2>Your dream hair <em>starts here.</em></h2>
+        <p>Fill out the form so I can get to know you and your hair goals. If we’re a good fit, you’ll hear from me soon!</p>
+      </div>
+
+      <div class="form-shell reveal">
+        <div class="form-tabs" role="tablist" aria-label="Choose a form">
+          <button type="button" role="tab" id="tab-new" aria-controls="form-new" aria-selected="true">New client</button>
+          <button type="button" role="tab" id="tab-ext" aria-controls="form-ext" aria-selected="false" tabindex="-1">Extensions</button>
+        </div>
+
+        <!-- New client -->
+        <form class="client-form" id="form-new" role="tabpanel" aria-labelledby="tab-new" data-form="New client" novalidate>
+          <fieldset class="row-2">
+            <legend class="sr-only">Name</legend>
+            <label class="field"><span>First name <i>*</i></span><input name="first_name" autocomplete="given-name" required></label>
+            <label class="field"><span>Last name <i>*</i></span><input name="last_name" autocomplete="family-name" required></label>
+          </fieldset>
+          <label class="field"><span>Phone number <i>*</i></span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(208) 555-0123" required></label>
+          <label class="field"><span>Email <small>Optional</small></span><input name="email" type="email" autocomplete="email" placeholder="you@example.com"></label>
+          <label class="field"><span>What’s your Instagram handle?</span><span class="prefix"><b>@</b><input name="instagram" autocapitalize="off" autocomplete="off" spellcheck="false"></span></label>
+
+          <fieldset class="field chips-field">
+            <legend>What service are you interested in booking?</legend>
+            <div class="chip-set">
+              <label><input type="checkbox" name="services" value="Balayage/lived in color"><span>Balayage / lived-in color</span></label>
+              <label><input type="checkbox" name="services" value="Root/base color and/or gray coverage"><span>Root/base color or gray coverage</span></label>
+              <label><input type="checkbox" name="services" value="All over solid color"><span>All-over solid color</span></label>
+              <label><input type="checkbox" name="services" value="Toner/gloss"><span>Toner / gloss</span></label>
+              <label><input type="checkbox" name="services" value="Blonding"><span>Blonding</span></label>
+              <label><input type="checkbox" name="services" value="Just a haircut"><span>Just a haircut</span></label>
+              <label><input type="checkbox" name="services" value="Not sure yet"><span>Not sure yet — let’s discuss!</span></label>
+            </div>
+          </fieldset>
+
+          <label class="field"><span>What’s your natural hair color?</span><input name="natural_color"></label>
+          <label class="field"><span>When’s the last time you colored your hair?</span><input name="last_colored"></label>
+          <label class="field"><span>Have you ever used box dye? If so, when? <i>*</i></span><input name="box_dye" required></label>
+
+          <fieldset class="field chips-field">
+            <legend>How often do you prefer to get your hair done? <small>(roughly)</small></legend>
+            <div class="chip-set">
+              <label><input type="radio" name="frequency" value="6-8 weeks"><span>6–8 weeks</span></label>
+              <label><input type="radio" name="frequency" value="3-4 months"><span>3–4 months</span></label>
+              <label><input type="radio" name="frequency" value="Every 6 months"><span>Every 6 months</span></label>
+              <label><input type="radio" name="frequency" value="Once a year"><span>Once a year</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="field chips-field">
+            <legend>What days of the week work best for you?</legend>
+            <div class="chip-set days">
+              <label><input type="checkbox" name="days" value="Mon"><span>Mon</span></label>
+              <label><input type="checkbox" name="days" value="Tue"><span>Tue</span></label>
+              <label><input type="checkbox" name="days" value="Wed"><span>Wed</span></label>
+              <label><input type="checkbox" name="days" value="Thu"><span>Thu</span></label>
+              <label><input type="checkbox" name="days" value="Fri"><span>Fri</span></label>
+              <label><input type="checkbox" name="days" value="Sat"><span>Sat</span></label>
+              <label><input type="checkbox" name="days" value="Sun"><span>Sun</span></label>
+            </div>
+          </fieldset>
+
+          <div class="field upload" data-required>
+            <span class="label">1–2 photos of your hair in natural light <i>*</i></span>
+            <small class="hint">Preferably taken within the last month!</small>
+            <label class="drop"><input type="file" name="photos_current" accept="image/*" multiple data-max="2"><span>＋ Add photos</span></label>
+            <div class="thumbs"></div>
+          </div>
+          <div class="field upload" data-required>
+            <span class="label">Photos of your hair goals <i>*</i></span>
+            <label class="drop"><input type="file" name="photos_goal" accept="image/*" multiple data-max="4"><span>＋ Add photos</span></label>
+            <div class="thumbs"></div>
+          </div>
+
+          <label class="field"><span>Anything else you want to add?</span><textarea name="notes" rows="3"></textarea></label>
+
+          <p class="form-error" role="alert" hidden></p>
+          <button class="btn dark submit" type="submit">Send my info <span class="arrow">→</span></button>
+        </form>
+
+        <!-- Extensions -->
+        <form class="client-form" id="form-ext" role="tabpanel" aria-labelledby="tab-ext" data-form="New extension client" novalidate hidden>
+          <fieldset class="row-2">
+            <legend class="sr-only">Name</legend>
+            <label class="field"><span>First name <i>*</i></span><input name="first_name" autocomplete="given-name" required></label>
+            <label class="field"><span>Last name <i>*</i></span><input name="last_name" autocomplete="family-name" required></label>
+          </fieldset>
+          <label class="field"><span>Phone number <i>*</i></span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(208) 555-0123" required></label>
+          <label class="field"><span>Email <i>*</i></span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
+          <label class="field"><span>What’s your Instagram handle? <small>Optional</small></span><span class="prefix"><b>@</b><input name="instagram" autocapitalize="off" autocomplete="off" spellcheck="false"></span></label>
+
+          <fieldset class="field chips-field">
+            <legend>Do you currently have extensions in?</legend>
+            <div class="chip-set">
+              <label><input type="radio" name="current_extensions" value="Yes"><span>Yes</span></label>
+              <label><input type="radio" name="current_extensions" value="No"><span>No</span></label>
+            </div>
+          </fieldset>
+          <label class="field"><span>Have you ever had hair extensions before? If so, what kind? <i>*</i></span><input name="past_extensions" required></label>
+
+          <fieldset class="field chips-field" data-required>
+            <legend>What’s your main goal with extensions? <i>*</i></legend>
+            <div class="chip-set stack">
+              <label><input type="checkbox" name="goals" value="Added thickness"><span>I like my length but would love some added thickness</span></label>
+              <label><input type="checkbox" name="goals" value="Mainly length"><span>I want to mainly add length</span></label>
+              <label><input type="checkbox" name="goals" value="Length and thickness"><span>Both length & thickness</span></label>
+              <label><input type="checkbox" name="goals" value="Not sure, discuss at consult"><span>I’m not sure yet & would love to chat at my consult</span></label>
+              <label><input type="checkbox" name="goals" value="Maintain current extensions"><span>Just maintain the extensions I already have in</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="field chips-field">
+            <legend>At this time, are you interested in only an extension appointment or also color?</legend>
+            <div class="chip-set">
+              <label><input type="radio" name="interest" value="Extensions only"><span>Extensions only</span></label>
+              <label><input type="radio" name="interest" value="Extensions + color"><span>Extensions + color</span></label>
+              <label><input type="radio" name="interest" value="Not sure yet"><span>Not sure yet</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="field chips-field" data-required>
+            <legend>What days of the week work best for you? <i>*</i></legend>
+            <div class="chip-set days">
+              <label><input type="checkbox" name="days" value="Mon"><span>Mon</span></label>
+              <label><input type="checkbox" name="days" value="Tue"><span>Tue</span></label>
+              <label><input type="checkbox" name="days" value="Wed"><span>Wed</span></label>
+              <label><input type="checkbox" name="days" value="Thu"><span>Thu</span></label>
+              <label><input type="checkbox" name="days" value="Fri"><span>Fri</span></label>
+              <label><input type="checkbox" name="days" value="Sat"><span>Sat</span></label>
+              <label><input type="checkbox" name="days" value="Sun"><span>Sun</span></label>
+            </div>
+          </fieldset>
+
+          <div class="field upload" data-required>
+            <span class="label">1–2 photos of your current hair <i>*</i></span>
+            <label class="drop"><input type="file" name="photos_current" accept="image/*" multiple data-max="2"><span>＋ Add photos</span></label>
+            <div class="thumbs"></div>
+          </div>
+          <div class="field upload" data-required>
+            <span class="label">Photos of your hair goals <i>*</i></span>
+            <label class="drop"><input type="file" name="photos_goal" accept="image/*" multiple data-max="4"><span>＋ Add photos</span></label>
+            <div class="thumbs"></div>
+          </div>
+
+          <label class="field"><span>Anything else you’d like to add?</span><textarea name="notes" rows="3"></textarea></label>
+
+          <p class="form-error" role="alert" hidden></p>
+          <button class="btn dark submit" type="submit">Request my free consult <span class="arrow">→</span></button>
+        </form>
+
+        <div class="form-done" hidden tabindex="-1">
+          <svg viewBox="0 0 200 260" aria-hidden="true"><use href="#kae-mark"/></svg>
+          <h3>Thank you, <span data-name>babe</span>!</h3>
+          <p>I got your info. If we’re a good fit, you’ll hear from me soon.</p>
+          <p class="signature">xoxo, Kaelyn</p>
+          <p class="form-note" hidden></p>
+        </div>
+      </div>
+
+      <p class="fine">Questions? <a href="mailto:kaetheblondie@gmail.com">kaetheblondie@gmail.com</a><br>Please reach out for the salon address.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <svg viewBox="0 0 200 260" aria-hidden="true"><use href="#kae-mark"/></svg>
+        <div><div class="by">Beauty by</div><div class="name">Kae<i>.</i></div></div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#extensions">Extensions</a></li>
+          <li><a href="#book">Book</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="https://instagram.com/kaetheblondie" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@kaetheblondie" target="_blank" rel="noopener">TikTok</a></li>
+          <li><a href="https://www.youtube.com/@kaetheblondie" target="_blank" rel="noopener">YouTube</a></li>
+          <li><a href="https://www.shopltk.com/explore/Kaetheblondie" target="_blank" rel="noopener">LTK</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Beauty by Kae · Kaelyn Moritsch</span>
+      <span>Some links are affiliate links — thank you for supporting my small business 💗</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Phones: always-reachable booking -->
+<div class="book-bar" aria-hidden="true">
+  <a class="btn dark" href="#book" tabindex="-1">Book with Kae <span class="arrow">→</span></a>
+  <a class="ig" href="https://instagram.com/kaetheblondie" target="_blank" rel="noopener" aria-label="Instagram" tabindex="-1"><svg><use href="#i-instagram"/></svg></a>
+</div>
+
+<!-- Random pick from her shops & socials (filled by main.js) -->
+<aside class="promo" aria-label="From Kae" aria-hidden="true">
+  <span class="promo-thumb"></span>
+  <span class="promo-body">
+    <span class="promo-kind"></span>
+    <span class="promo-title"></span>
+    <span class="promo-text"></span>
+    <span class="promo-actions">
+      <a class="promo-cta" href="#" target="_blank" rel="noopener"></a>
+      <button class="promo-next" type="button">Show another</button>
+    </span>
+  </span>
+  <button class="promo-close" type="button" aria-label="Close">&times;</button>
+</aside>
+
+<script src="main.js" defer></script>
+</body>
+</html>

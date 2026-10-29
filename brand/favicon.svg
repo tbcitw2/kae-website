@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#1E1A17"/><svg x="6" y="3" width="52" height="60" viewBox="0 0 200 260" color="#F5F1EB"><g fill="none">
+  <!-- Arch: salon mirror / boutique window, squared-off top -->
+  <path d="M28 248V100a44 44 0 0 1 44-44h56a44 44 0 0 1 44 44v148" stroke="currentColor" stroke-width="5.5"/>
+  <path d="M40 248V100a32 32 0 0 1 32-32h56a32 32 0 0 1 32 32v148" stroke="currentColor" stroke-width="1.8"/>
+  <line x1="16" y1="248" x2="184" y2="248" stroke="currentColor" stroke-width="5.5"/>
+  <g transform="translate(-9 0)">
+    <!-- K stem: heavy stroke with slab-ish serifs -->
+    <rect x="65" y="92" width="24" height="124" fill="currentColor"/>
+    <rect x="53" y="88" width="48" height="7" fill="currentColor"/>
+    <rect x="53" y="213" width="48" height="7" fill="currentColor"/>
+    <!-- K arm -->
+    <path d="M86 162 L135 96" stroke="currentColor" stroke-width="8" stroke-linecap="butt"/>
+    <rect x="118" y="88" width="36" height="7" fill="currentColor"/>
+    <!-- K leg: a lock of wavy hair -->
+    <path d="M88 134
+             C116 147 108 171 125 181
+             C142 191 133 205 153 213
+             C159 215 164 213 168 206
+             C167 223 155 230 142 228
+             C113 223 121 205 107 195
+             C93 185 103 169 88 166 Z" fill="currentColor"/>
+    <path d="M97 141 C121 153 116 174 132 182 C147 190 142 202 161 206 C167 207 171 204 174 198" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M89 172 C99 181 97 194 104 204 C111 214 119 225 135 232" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  </g>
+  <!-- Pink sparkle (her signature hot-pink nails), twinkling off the corner -->
+  <path d="M160 26 C161.8 36 164.6 38.6 174 40.4 C164.6 42.2 161.8 45 160 55 C158.2 45 155.4 42.2 146 40.4 C155.4 38.6 158.2 36 160 26Z" fill="#FF3EA5"/>
+  <circle cx="178" cy="56" r="3.2" fill="#FF3EA5"/>
+</g></svg></svg>

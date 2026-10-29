@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beauty by Kae — Brand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&family=Karla:wght@400;500;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F1EB; --latte: #E9DED7; --mocha: #7C654D; --ink: #1E1A17;
+    --honey: #E3C48E; --pink: #FF3EA5; --sage: #8A8F72;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--cream); color: var(--ink); font-family: Karla, sans-serif; padding: 48px 16px 80px; }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  h1 { font: 500 13px Karla; letter-spacing: .35em; text-transform: uppercase; margin-bottom: 32px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .card { background: #fff; border: 1.5px solid var(--ink); border-radius: 22px; box-shadow: 6px 6px 0 var(--ink);
+          padding: 40px 24px; display: grid; place-items: center; min-height: 360px; }
+  .card.dark { background: var(--ink); color: var(--cream); }
+  .card svg { color: inherit; }
+  .card.latte { background: var(--latte); }
+  .card.pink { background: var(--pink); }
+  .label { font: 700 11px Karla; letter-spacing: .3em; text-transform: uppercase; color: var(--mocha); margin: 36px 0 14px; }
+
+  /* Logo lockups */
+  .lockup { text-align: center; }
+  .lockup svg { width: 120px; height: auto; display: block; margin: 0 auto 14px; }
+  .lockup .by { font: 700 11px Karla; letter-spacing: .5em; text-transform: uppercase; margin-left: .5em; }
+  .lockup .name { font: 700 64px/0.95 "Bodoni Moda", serif; font-variation-settings: "opsz" 28; letter-spacing: -.01em; }
+  .lockup .name i { font-style: normal; color: var(--pink); }
+  .lockup .tag { font: 700 10px Karla; letter-spacing: .42em; text-transform: uppercase; margin-top: 12px; margin-left: .42em; }
+
+  .row { display: flex; align-items: center; gap: 16px; }
+  .row svg { width: 54px; height: auto; }
+  .row .stack .by { font: 700 10px Karla; letter-spacing: .5em; text-transform: uppercase; }
+  .row .stack .name { font: 700 40px/1 "Bodoni Moda", serif; font-variation-settings: "opsz" 28; }
+
+  .badge { width: 210px; height: 210px; border-radius: 50%; border: 1.5px solid currentColor; position: relative; display: grid; place-items: center; }
+  .badge svg.mk { width: 78px; }
+  .badge svg.ring { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+  .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 14px; }
+  .sw { border: 1.5px solid var(--ink); border-radius: 18px; overflow: hidden; background: #fff; }
+  .sw div { height: 96px; }
+  .sw p { padding: 10px 12px; font-size: 13px; line-height: 1.35; }
+  .sw b { display: block; font-size: 14px; }
+
+  .type { display: grid; gap: 18px; background: #fff; border: 1.5px solid var(--ink); border-radius: 22px; padding: 28px; }
+  .type .d { font: 500 46px/1.05 "Bodoni Moda", serif; font-variation-settings: "opsz" 28; }
+  .type .b { font: 400 17px/1.6 Karla; max-width: 60ch; }
+  .type .s { font: 400 44px "Mrs Saint Delafield", cursive; color: var(--mocha); }
+  .type small { font: 700 11px Karla; letter-spacing: .3em; text-transform: uppercase; color: var(--mocha); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Beauty by Kae &nbsp;·&nbsp; Brand sheet</h1>
+
+  <p class="label">Logo</p>
+  <div class="grid">
+    <div class="card">
+      <div class="lockup">
+        <svg viewBox="0 0 200 260"><use href="mark.svg#m"/></svg>
+        <div class="by">Beauty by</div>
+        <div class="name">Kae<i>.</i></div>
+        <div class="tag">Hair · Color · Style</div>
+      </div>
+    </div>
+    <div class="card dark">
+      <div class="lockup">
+        <svg viewBox="0 0 200 260" class="inv"><use href="mark.svg#m"/></svg>
+        <div class="by">Beauty by</div>
+        <div class="name">Kae<i>.</i></div>
+        <div class="tag">Hair · Color · Style</div>
+      </div>
+    </div>
+    <div class="card latte">
+      <div class="badge">
+        <svg class="ring" viewBox="0 0 210 210">
+          <defs><path id="circ" d="M105 105 m-82 0 a82 82 0 1 1 164 0 a82 82 0 1 1 -164 0"/></defs>
+          <text font-family="Karla" font-weight="700" font-size="11" letter-spacing="5.2" fill="currentColor">
+            <textPath href="#circ">BEAUTY BY KAE ✦ HAIR · COLOR · STYLE ✦</textPath>
+          </text>
+        </svg>
+        <svg class="mk" viewBox="0 0 200 260"><use href="mark.svg#m"/></svg>
+      </div>
+    </div>
+    <div class="card">
+      <div class="row">
+        <svg viewBox="0 0 200 260"><use href="mark.svg#m"/></svg>
+        <div class="stack"><div class="by">Beauty by</div><div class="name">Kae</div></div>
+      </div>
+    </div>
+    <div class="card pink">
+      <div class="lockup">
+        <svg viewBox="0 0 200 260"><use href="mark.svg#m"/></svg>
+        <div class="name" style="font-size:clamp(28px,3.2vw,38px)">kaetheblondie</div>
+      </div>
+    </div>
+    <div class="card dark">
+      <svg viewBox="0 0 200 260" style="width:150px" class="inv"><use href="mark.svg#m"/></svg>
+    </div>
+  </div>
+
+  <p class="label">Palette</p>
+  <div class="swatches">
+    <div class="sw"><div style="background:#F5F1EB"></div><p><b>Cream</b>#F5F1EB<br>Backgrounds</p></div>
+    <div class="sw"><div style="background:#E9DED7"></div><p><b>Latte</b>#E9DED7<br>Her photo backdrop</p></div>
+    <div class="sw"><div style="background:#E3C48E"></div><p><b>Honey Blonde</b>#E3C48E<br>Her hair</p></div>
+    <div class="sw"><div style="background:#7C654D"></div><p><b>Mocha</b>#7C654D<br>Accents, labels</p></div>
+    <div class="sw"><div style="background:#8A8F72"></div><p><b>Olive Leaf</b>#8A8F72<br>Her Linktree</p></div>
+    <div class="sw"><div style="background:#1E1A17"></div><p><b>Leather Black</b>#1E1A17<br>Type, borders</p></div>
+    <div class="sw"><div style="background:#FF3EA5"></div><p><b>Nail Pink</b>#FF3EA5<br>One pop per screen</p></div>
+  </div>
+
+  <p class="label">Type</p>
+  <div class="type">
+    <small>Display — Bodoni Moda (low optical size)</small>
+    <div class="d">Effortless blondes, lived-in color.</div>
+    <small>Body — Karla (from her Linktree)</small>
+    <div class="b">I’m an independent hairstylist with a passion for elevated, effortless beauty — seamless blondes, lived-in color and hand-tied extensions.</div>
+    <small>Signature — Mrs Saint Delafield</small>
+    <div class="s">xoxo, Kaelyn</div>
+  </div>
+</div>
+</body>
+</html>
